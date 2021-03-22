@@ -6,3 +6,5 @@
 	co = commit
 [core]
 	editor = vim
+[ghq]
+        root = ~/.ghq
