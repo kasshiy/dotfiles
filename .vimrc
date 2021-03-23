@@ -1,4 +1,5 @@
-set fenc=utf-8
+let &termencoding = &encoding
+set encoding=utf-8
 
 set nobackup
 set noswapfile
@@ -6,13 +7,16 @@ set autoread
 set hidden
 set showcmd
 set mouse=a
+set scrolloff=3 
 
 set expandtab 
 set tabstop=4 
+autocmd FileType haskell setlocal tabstop=2
 set softtabstop=4 
-set autoindent 
-set smartindent 
+set cindent
 set shiftwidth=4 
+set matchtime=2
+set matchpairs+=<:>   
 
 set number
 set cursorline
@@ -21,14 +25,25 @@ set virtualedit=onemore
 set wildmenu
 set history=10000
 set undofile 
+set undodir=$VIM/undo
 
 set smartindent
 set visualbell
 set showmatch
 set laststatus=2
+set iminsert=2 
 
 nnoremap j gj
 nnoremap k gk
+
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <C-e> <plug>NERDTreeTabsToggle<CR>
+vmap # y/<C-R>"<CR>
+
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 syntax enable
 
@@ -39,7 +54,6 @@ set hls
 
 setlocal formatexpr=format#Format()
 
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 call plug#begin()
 
@@ -48,17 +62,20 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'tpope/vim-fugitive'
-
 Plug 'vim-jp/vimdoc-ja'
 
-Plug 'dag/vim-fish'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'ryanoasis/vim-devicons'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()
 
@@ -73,6 +90,16 @@ let g:airline_theme = 'badwolf'
 if !exists('g:airline_symbols')
 	  let g:airline_symbols = {}
 endif
+
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeCascadeOpenSingleChildDir = 1
+let g:NERDTreeStatusline="%{exists('b:NERDTree')?b:NERDTree.root.path.str():'NERDTree'}"
+let g:NERDTreeIgnore=['\.git$','\.stack-work$','\.vscode', '\~$']
+
+let g:NERDTreeGitStatusShowClean = 1
+let g:NERDTreeGitStatusConcealBrackets = 1 
+
+" let g:webdevicons_conceal_nerdtree_brackets = 1
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -135,6 +162,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>F  <Plug>(coc-format)
+nmap <leader>F  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -157,6 +186,7 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
+
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <C-d> <Plug>(coc-range-select)

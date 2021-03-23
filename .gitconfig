@@ -4,6 +4,7 @@
 [alias]
 	st = status
 	co = commit
+	fadd = !fgadd
 [core]
 	editor = vim
 [ghq]
