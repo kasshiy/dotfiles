@@ -20,6 +20,7 @@ set virtualedit=onemore
 
 set wildmenu
 set history=10000
+set undofile 
 
 set smartindent
 set visualbell
@@ -60,6 +61,8 @@ Plug 'dag/vim-fish'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
+
+packadd! matchit
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
