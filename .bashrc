@@ -122,17 +122,6 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-#powerline
-/home/kasshi_k/.local/bin/powerline-daemon -q
-function _update_ps1()
-{
-      PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-      PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
 # start ssh-agent in the background
 
 keychain -q ~/.ssh/git/id_rsa 
@@ -148,12 +137,11 @@ elif [[ $SHLVL = 1 && $tmux_count = 1 ]]; then
     echo "Please Enter Starting Mode"
     read SESINAME
     if [[ $SESINAME = "" ]]; then
-        exec fish
+        echo "Tmux attatched"
         tmux a
     elif [[ $SESINAME = "-" ]]; then
         echo "only bash mode"
     else
-        exec fish
         tmux a -t $SESINAME 2>/dev/null
     fi
 fi

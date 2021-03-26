@@ -8,4 +8,7 @@
 [core]
 	editor = vim
 [ghq]
-        root = ~/.ghq
+    root = ~/.ghq
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:
