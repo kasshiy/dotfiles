@@ -124,7 +124,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # start ssh-agent in the background
 
-keychain -q ~/.ssh/git/id_rsa 
+keychain -q ~/.ssh/git/id_rsa
 source $HOME/.keychain/$HOSTNAME-sh
 
 #end

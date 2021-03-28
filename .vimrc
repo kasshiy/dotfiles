@@ -7,19 +7,19 @@ set autoread
 set hidden
 set showcmd
 set mouse=a
-set scrolloff=3 
+set scrolloff=3
 set ttyfast
 
-set expandtab 
-set tabstop=4 
+set expandtab
+set tabstop=4
 autocmd FileType haskell setlocal tabstop=2
-set softtabstop=4 
+set softtabstop=4
 autocmd FileType haskell setlocal softtabstop=2
 set smartindent
-set shiftwidth=4 
+set shiftwidth=4
 autocmd FileType haskell setlocal shiftwidth=2
 set matchtime=2
-set matchpairs+=<:>   
+set matchpairs+=<:>
 
 set number
 set cursorline
@@ -27,13 +27,13 @@ set virtualedit=onemore
 
 set wildmenu
 set history=10000
-set undofile 
+set undofile
 set undodir=$VIM/undo
 
 set visualbell
 set showmatch
 set laststatus=2
-set iminsert=2 
+set iminsert=2
 
 nnoremap j gj
 nnoremap k gk
@@ -102,7 +102,7 @@ let g:NERDTreeStatusline="%{exists('b:NERDTree')?b:NERDTree.root.path.str():'NER
 let g:NERDTreeIgnore=['\.git$','\.stack-work$','\.vscode', '\~$']
 
 let g:NERDTreeGitStatusShowClean = 1
-let g:NERDTreeGitStatusConcealBrackets = 1 
+let g:NERDTreeGitStatusConcealBrackets = 1
 
 " let g:webdevicons_conceal_nerdtree_brackets = 1
 
