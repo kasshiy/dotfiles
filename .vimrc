@@ -8,13 +8,16 @@ set hidden
 set showcmd
 set mouse=a
 set scrolloff=3 
+set ttyfast
 
 set expandtab 
 set tabstop=4 
 autocmd FileType haskell setlocal tabstop=2
 set softtabstop=4 
-set cindent
+autocmd FileType haskell setlocal softtabstop=2
+set smartindent
 set shiftwidth=4 
+autocmd FileType haskell setlocal shiftwidth=2
 set matchtime=2
 set matchpairs+=<:>   
 
@@ -27,7 +30,6 @@ set history=10000
 set undofile 
 set undodir=$VIM/undo
 
-set smartindent
 set visualbell
 set showmatch
 set laststatus=2
@@ -38,6 +40,7 @@ nnoremap k gk
 
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-e> <plug>NERDTreeTabsToggle<CR>
+"search in visualmode
 vmap # y/<C-R>"<CR>
 
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
@@ -70,6 +73,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dag/vim-fish'
+
 
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
