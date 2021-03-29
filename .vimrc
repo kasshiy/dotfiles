@@ -12,18 +12,19 @@ set ttyfast
 
 set expandtab
 set tabstop=4
-autocmd FileType haskell setlocal tabstop=2
+autocmd FileType hs setlocal tabstop=2
 set softtabstop=4
-autocmd FileType haskell setlocal softtabstop=2
+autocmd FileType hs setlocal softtabstop=2
 set smartindent
 set shiftwidth=4
-autocmd FileType haskell setlocal shiftwidth=2
+autocmd FileType hs setlocal shiftwidth=2
 set matchtime=2
 set matchpairs+=<:>
 
 set number
 set cursorline
 set virtualedit=onemore
+highlight Comment cterm=italic
 
 set wildmenu
 set history=10000
