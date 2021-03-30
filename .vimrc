@@ -24,7 +24,7 @@ set matchpairs+=<:>
 set number
 set cursorline
 set virtualedit=onemore
-highlight Comment cterm=italic
+highlight Comment cterm=italic ctermfg=4 guifg=Blue
 
 set wildmenu
 set history=10000
@@ -104,6 +104,8 @@ let g:NERDTreeIgnore=['\.git$','\.stack-work$','\.vscode', '\~$']
 
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 1
+
+highlight CocUnderline ctermul=DarkRed cterm=underline gui=underline
 
 " let g:webdevicons_conceal_nerdtree_brackets = 1
 
