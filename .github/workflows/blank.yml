@@ -1,0 +1,27 @@
+  
+name: Lint
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  lint-check:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    # Lint check
+    - name: Check setup init deploy
+      run: |
+        shellcheck -f gcc ${GITHUB_WORKSPACE}/etc/setup --exclude=SC1090
+        shellcheck -f gcc ${GITHUB_WORKSPACE}/etc/scripts/init --exclude=SC1090
+        shellcheck -f gcc ${GITHUB_WORKSPACE}/etc/scripts/deploy --exclude=SC1090
+    - name: Check .bashrc
+      run: shellcheck -f gcc ${GITHUB_WORKSPACE}/config/bash/.bashrc --exclude=SC2148,SC1090
+
+    - name: Check .vim/*.vim
+      run: vint ${GITHUB_WORKSPACE}/config/nvim/*.vim -cstV 
