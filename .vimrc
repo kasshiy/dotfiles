@@ -8,16 +8,14 @@ set hidden
 set showcmd
 set mouse=a
 set scrolloff=3
+set ttimeoutlen=50
 set ttyfast
 
 set expandtab
-set tabstop=4
-autocmd FileType hs setlocal tabstop=2
-set softtabstop=4
-autocmd FileType hs setlocal softtabstop=2
+set tabstop=2
+set softtabstop=2
 set smartindent
-set shiftwidth=4
-autocmd FileType hs setlocal shiftwidth=2
+set shiftwidth=2
 set matchtime=2
 set matchpairs+=<:>
 
@@ -30,14 +28,15 @@ set wildmenu
 set history=10000
 set undofile
 set undodir=$VIM/undo
+set cm=blowfish2
 
 set visualbell
 set showmatch
 set laststatus=2
 set iminsert=2
 
-nnoremap j gj
-nnoremap k gk
+nmap j gj
+nmap k gk
 
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-e> <plug>NERDTreeTabsToggle<CR>
@@ -49,6 +48,8 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
+command! Reload source ~/.vimrc
+
 syntax enable
 
 set ic
@@ -57,7 +58,6 @@ set is
 set hls
 
 setlocal formatexpr=format#Format()
-
 
 call plug#begin()
 
@@ -76,7 +76,6 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dag/vim-fish'
 
-
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
@@ -92,13 +91,14 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'angr'
 if !exists('g:airline_symbols')
 	  let g:airline_symbols = {}
 endif
 
 let g:airline_left_sep = "\uE0C6"
 let g:airline_right_sep = "\uE0BA "
+let g:airline_symbols_crypt = '🔒'
 
 " set the CN (column number) symbol:
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}'. "\uE0A3" . '%{col(".")}'])
@@ -112,7 +112,7 @@ let g:NERDTreeIgnore=['\.git$','\.stack-work$','\.vscode', '\~$']
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 1
 
-highlight CocUnderline ctermul=DarkRed cterm=underline gui=underline
+"highlight CocUnderline ctermul=DarkRed cterm=underline gui=underline
 
 " let g:webdevicons_conceal_nerdtree_brackets = 1
 
@@ -127,11 +127,11 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
+imap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -139,13 +139,13 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+imap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" imap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -158,7 +158,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -218,18 +218,18 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nmap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nmap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nmap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nmap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nmap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nmap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nmap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nmap <silent> <space>p  :<C-u>CocListResume<CR>
