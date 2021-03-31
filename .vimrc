@@ -97,6 +97,13 @@ if !exists('g:airline_symbols')
 	  let g:airline_symbols = {}
 endif
 
+let g:airline_left_sep = "\uE0C6"
+let g:airline_right_sep = "\uE0BA "
+
+" set the CN (column number) symbol:
+let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}'. "\uE0A3" . '%{col(".")}'])
+ 
+
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeCascadeOpenSingleChildDir = 1
 let g:NERDTreeStatusline="%{exists('b:NERDTree')?b:NERDTree.root.path.str():'NERDTree'}"
