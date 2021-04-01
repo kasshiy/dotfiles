@@ -93,16 +93,17 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline_theme = 'angr'
 if !exists('g:airline_symbols')
-	  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 
 let g:airline_left_sep = "\uE0C6"
+let g:airline_left_alt_sep = "省"
 let g:airline_right_sep = "\uE0BA "
+let g:airline_right_alt_sep = " "
 let g:airline_symbols_crypt = '🔒'
 
 " set the CN (column number) symbol:
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}'. "\uE0A3" . '%{col(".")}'])
- 
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeCascadeOpenSingleChildDir = 1
