@@ -3,6 +3,7 @@ set encoding=utf-8
 
 set nobackup
 set noswapfile
+set belloff=all
 set autoread
 set hidden
 set showcmd
@@ -15,6 +16,7 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set smartindent
+set bri
 set shiftwidth=2
 set matchtime=2
 set matchpairs+=<:>
@@ -23,17 +25,25 @@ set number
 set cursorline
 set virtualedit=onemore
 highlight Comment cterm=italic ctermfg=4 guifg=Blue
+set emoji
 
 set wildmenu
 set history=10000
 set undofile
-set undodir=$VIM/undo
+set undodir=~/.vim/undo
 set cm=blowfish2
 
-set visualbell
 set showmatch
 set laststatus=2
 set iminsert=2
+
+syntax enable
+
+set ic
+set sc
+set is
+set hls
+set tagcase=followscs
 
 nmap j gj
 nmap k gk
@@ -49,13 +59,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 command! Reload source ~/.vimrc
-
-syntax enable
-
-set ic
-set sc
-set is
-set hls
 
 setlocal formatexpr=format#Format()
 
@@ -98,8 +101,8 @@ endif
 
 let g:airline_left_sep = "\uE0C6"
 let g:airline_left_alt_sep = "省"
-let g:airline_right_sep = "\uE0BA "
-let g:airline_right_alt_sep = " "
+let g:airline_right_sep = "\uE0BA"
+let g:airline_right_alt_sep = ""
 let g:airline_symbols_crypt = '🔒'
 
 " set the CN (column number) symbol:
@@ -108,7 +111,9 @@ let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}'. "\u
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeCascadeOpenSingleChildDir = 1
 let g:NERDTreeStatusline="%{exists('b:NERDTree')?b:NERDTree.root.path.str():'NERDTree'}"
-let g:NERDTreeIgnore=['\.git$','\.stack-work$','\.vscode', '\~$']
+let g:NERDTreeIgnore = ['\.git$','\.stack-work$','\.vscode', '\~$']
+let g:NERDTreeWinPos = 'right'
+let g:NERDTreeWinSize = 37
 
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 1
@@ -212,25 +217,25 @@ xmap <silent> <C-d> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call   CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR   :call   CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
 " Show all diagnostics
-nmap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nmap <silent> \<space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nmap <silent> <space>e  :<C-u>CocList extensions<cr>
+nmap <silent> \<space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nmap <silent> <space>c  :<C-u>CocList commands<cr>
+nmap <silent> \<space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nmap <silent> <space>o  :<C-u>CocList outline<cr>
+nmap <silent> \<space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nmap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nmap <silent> \<space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nmap <silent> <space>j  :<C-u>CocNext<CR>
+nmap <silent> \<space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nmap <silent> <space>k  :<C-u>CocPrev<CR>
+nmap <silent> \<space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nmap <silent> <space>p  :<C-u>CocListResume<CR>
+nmap <silent> \<space>p  :<C-u>CocListResume<CR>
