@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+
+function get-ssh-info {
+    local pane_pid="$1"
+    local ssh_info=$({ pgrep -flaP $pane_pid ; ps -o command -p $pane_pid; } | xargs -I{} echo {} | awk '/ssh/' | sed -E 's/^[0-9]*[[:blank:]]*ssh //')
+    local port=$(echo $info | grep -Eo '\-p ([0-9]+)'|sed 's/-p //')
+    [[ -z $port ]] && port=22
+    ssh_info=$(echo $ssh_info | sed 's/\-p '"$port"'//g')
+    local user=$(echo $ssh_info | awk '{print $NF}' | cut -f1 -d@)
+    local host=$(echo $ssh_info | awk '{print $NF}' | cut -f2 -d@)
+
+    if [ $user = $host ]; then
+        user=$(whoami)
+        local list=$(awk '
+        $1 == "Host" {
+        gsub("\\\\.", "\\\\.", $2);
+        gsub("\\\\*", ".*", $2);
+        host = $2;
+        next;
+        }
+        $1 == "User" {
+        $1 = "";
+        sub( /^[[:space:]]*/, "" );
+        printf "%s|%s\n", host, $0;
+        }' ~/.ssh/config
+          )
+        local host_user
+        echo $list | while read line; do
+        host_user=${line#*|}
+        if [[ "$host" =~ $line ]]; then
+            user=$host_user
+            break
+        fi
+        done
+    fi
+    echo "#[bg=colour013,fg=black] ssh:$user@$host #[default]"
+}
+
+
+function get-vim-info {
+    local pane_index="$1"
+    local pane_is_active="$2"
+    if [[ ${pane_is_active} = "1" ]]; then
+        local index="#[bg=green,fg=black] ACTIVE #[bg=colour034,fg=green]#[default]"
+    else
+        local index="#[bg=colour014,fg=black] #[default]"
+    fi
+    echo "${index}#[bg=colour034,fg=black] vim #[default]"
+}
+
+
+function get-prompt-info() {
+    local pane_path="$1"
+    local pane_index="$2"
+    local pane_is_active="$3"
+    local git_status=$(cd $pane_path && git --no-optional-locks status 2>/dev/null )
+
+    if [[ ${pane_is_active} = "1" ]]; then
+        local index="#[bg=green,fg=black] ACTIVE #[default]"
+        local branch_format="#[bg=black,fg=colour014]"
+        local path_format="#[bg=black,fg=cyan]#[underscore]"
+    else
+        local index="#[bg=colour014,fg=black] ${pane_index} #[default]"
+        local branch_format="#[bg=colour236,fg=colour014]"
+        local path_format="#[bg=colour236,fg=colour037]#[underscore]"
+    fi
+    git_symbol_1_format="#[bg=colour013,fg=black]"
+    git_symbol_2_format="#[bg=blue,fg=black]"
+    git_symbol_3_format="#[bg=green,fg=black]"
+
+    if [[ -n $git_status ]]; then
+        local git_branch="$(echo $git_status| awk 'NR==1 {print $3}')"
+        local state
+        case $git_status in
+            *Changes\ not\ staged* )       state="${git_symbol_1_format} ± #[default]" ;;
+            *Changes\ to\ be\ committed* ) state="${git_symbol_2_format} + #[default]" ;;
+            * )                            state="${git_symbol_3_format} ✔ #[default]" ;;
+        esac
+    local git_info
+    if [[ $git_branch = "master" ]]; then
+        git_info="${branch_format}|#[underscore]#[bold]  ${git_branch} #[default]${state}"
+    else
+        git_info="${branch_format}|#[underscore]  ${git_branch} #[default]${state}"
+    fi
+    else
+        git_info=""
+    fi
+
+
+    local path="${path_format} ${pane_path} #[default]"
+    echo "${index}${path}${git_info}"
+}
+
+function main() {
+    local pane_command="$1"
+    local pane_pid="$2"
+    local pane_path="$3"
+    local pane_index="$4"
+    local pane_is_active="$5"
+    local info
+
+    if [[ $pane_command = "ssh" ]]; then
+        info="$(get-ssh-info $pane_pid)"
+    elif [[ $pane_command = "vim" ]]; then
+        info="$(get-vim-info $pane_index $pane_is_active)"
+    else
+        info="$(get-prompt-info $pane_path $pane_index $pane_is_active)"
+    fi
+    echo "$info"
+}
+
+main $@
