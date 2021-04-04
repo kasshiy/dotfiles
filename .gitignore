@@ -9,7 +9,6 @@
 .*
 .*/
 .vim/plugged/
-mydoc/
 node_modules/
 tmux-client-2119.log
 vsdbg/
