@@ -44,6 +44,7 @@ set sc
 set is
 set hls
 set tagcase=followscs
+set pvp="a"
 
 nmap j gj
 nmap k gk
