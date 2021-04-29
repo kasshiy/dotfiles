@@ -4,6 +4,7 @@
 !.bashrc
 !.gitconfig
 !.gitignore
+!.gitignore_global
 !.profile
 !.tmux.conf
 !.tmux/tmux/

@@ -7,6 +7,7 @@
 	fadd = !fgadd
 [core]
 	editor = vim
+	excludesfile = /home/kasshi_k/.gitignore_global
 [ghq]
     root = ~/.ghq
 [url "github:"]
