@@ -5,6 +5,7 @@
 	st = status
 	co = commit
 	fadd = !fgadd
+	br = branch
 [core]
 	editor = vim
 	excludesfile = /home/kasshi_k/.gitignore_global
