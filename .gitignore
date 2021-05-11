@@ -12,6 +12,7 @@
 !.tmux/
 .tmux/*
 !.tmux/tmux/
+!.tmux/tmux/.tmux_local.conf
 
 !.vim/
 .vim/*
