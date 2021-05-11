@@ -1,97 +1,9 @@
-let &termencoding = &encoding
-set encoding=utf-8
-
-set nobackup
-set noswapfile
-set belloff=all
-set autoread
-set hidden
-set showcmd
-set mouse=a
-set scrolloff=3
-set ttimeoutlen=50
-set ttyfast
-
-set expandtab
-set tabstop=2
-set softtabstop=2
-set smartindent
-set bri
-set shiftwidth=2
-set matchtime=2
-set matchpairs+=<:>
-
-set number
-set cursorline
-set virtualedit=onemore
-highlight Comment cterm=italic ctermfg=4 guifg=Blue
-set emoji
-
-set wildmenu
-set history=10000
-set undofile
-set undodir=~/.vim/undo
-set cm=blowfish2
-
-set showmatch
-set laststatus=2
-set iminsert=2
-
-syntax enable
-
-set ic
-set sc
-set is
-set hls
-set tagcase=followscs
-set pvp="a"
-
 nmap j gj
 nmap k gk
 
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-nmap <silent> \<space>t :tab terminal<CR>
-nmap <C-e> <plug>NERDTreeTabsToggle<CR>
-"search in visualmode
-vmap # y/<C-R>"<CR>
+runtime! config/*.vim
 
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
-
-command! Reload source ~/.vimrc
-
-setlocal formatexpr=format#Format()
-
-call plug#begin()
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-
-Plug 'skanehira/gh.vim'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-Plug 'vim-jp/vimdoc-ja'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dag/vim-fish'
-
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-call plug#end()
-
-packadd! matchit
+colorscheme eva01-LCL
 
 set laststatus=2
 let g:airline_powerline_fonts = 1

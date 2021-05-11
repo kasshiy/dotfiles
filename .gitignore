@@ -12,6 +12,7 @@
 *.log
 .vim/plugged/
 mydoc/
+mygames/
 node_modules/
 vsdbg/
 yarn.lock
