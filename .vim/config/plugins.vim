@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 
 Plug 'scrooloose/nerdtree'
@@ -25,6 +26,8 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'guns/xterm-color-table.vim'
 Plug 'hachy/eva01.vim'
+
+Plug 'deris/vim-duzzle'
 
 call plug#end()
 
