@@ -26,6 +26,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'guns/xterm-color-table.vim'
 Plug 'hachy/eva01.vim'
+Plug 'joshdick/onedark.vim'
 
 Plug 'deris/vim-duzzle'
 

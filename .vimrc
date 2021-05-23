@@ -3,6 +3,7 @@ nmap k gk
 
 runtime! config/*.vim
 
+"colorscheme onedark
 colorscheme eva01-LCL
 
 " set the CN (column number) symbol:
