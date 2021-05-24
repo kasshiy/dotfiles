@@ -12,11 +12,12 @@ Plug 'skanehira/gh.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'vim-jp/vimdoc-ja'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-ref'
+Plug 'ujihisa/ref-hoogle'
 
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -27,6 +28,8 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'guns/xterm-color-table.vim'
 Plug 'hachy/eva01.vim'
 Plug 'joshdick/onedark.vim'
+
+Plug 'vim-jp/vimdoc-ja'
 
 Plug 'deris/vim-duzzle'
 

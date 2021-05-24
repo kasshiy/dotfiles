@@ -19,7 +19,7 @@ set smartindent
 set bri
 set shiftwidth=2
 set matchtime=2
-set matchpairs+=<:>
+set matchpairs+=":",':'
 set laststatus=2
 
 set number
@@ -47,10 +47,16 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <silent> \<space>t :tab terminal<CR>
 nmap [b :bn<CR><Esc>
 nmap ]b :bp<CR><Esc>
+nmap [t gt
+nmap ]t gT
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-nmap <leader>fh :History<CR>
+nmap <leader>fa :Ag<CR>
 nmap <leader>fb :Buffers<CR>
+nmap <leader>fc :Commits<CR>
+nmap <leader>ff :Files<CR>
+nmap <leader>fh :History<CR>
+nmap <leader>fw :Windows<CR>
 
 command! Reload source ~/.vimrc
