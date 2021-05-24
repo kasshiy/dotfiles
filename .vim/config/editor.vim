@@ -47,7 +47,6 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <silent> \<space>t :tab terminal<CR>
 nmap [b :bn<CR><Esc>
 nmap ]b :bp<CR><Esc>
-nmap <C-e> <plug>NERDTreeTabsToggle<CR>
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
