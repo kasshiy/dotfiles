@@ -52,13 +52,13 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> \rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-xmap <leader>F  <Plug>(coc-format)
-nmap <leader>F  <Plug>(coc-format)
+xmap <silent> \f  <Plug>(coc-format-selected)
+nmap <silent> \f  <Plug>(coc-format-selected)
+xmap <silent> \F  <Plug>(coc-format)
+nmap <silent> \F  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -68,14 +68,14 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Remap for do codeAction of selected region, ex: `<silent> \aap` for current paragraph
+xmap <silent> \a  <Plug>(coc-codeaction-selected)
+nmap <silent> \a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <silent> \ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> \qf  <Plug>(coc-fix-current)
 
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -94,17 +94,7 @@ command! -nargs=? Fold :call   CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call   CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
-" Show all diagnostics
-nmap <silent> \<space>a  :<C-u>CocList diagnostics<cr>
-" Show commands
-nmap <silent> \<space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nmap <silent> \<space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nmap <silent> \<space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nmap <silent> \<space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nmap <silent> \<space>k  :<C-u>CocPrev<CR>
+" Fzf list
+nmap <silent> \\f  :<C-u>CocFzfList<cr>
 " Resume latest coc list
-nmap <silent> \<space>p  :<C-u>CocListResume<CR>
+nmap <silent> \\p  :<C-u>CocFzfListResume<CR>

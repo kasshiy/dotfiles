@@ -16,6 +16,8 @@
 
 !.vim/
 .vim/*
+!.vim/coc-settings.json
+!.vim/
 !.vim/config/
 !.vimrc
 
