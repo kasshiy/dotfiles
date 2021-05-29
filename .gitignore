@@ -26,3 +26,4 @@ mygames/
 node_modules/
 vsdbg/
 yarn.lock
+go/
