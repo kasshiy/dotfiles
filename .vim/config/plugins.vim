@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
+Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -23,6 +24,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 Plug 'sheerun/vim-polyglot'
+Plug 'neovimhaskell/haskell-vim'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'thinca/vim-quickrun'
@@ -37,6 +40,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'vim-jp/vimdoc-ja'
 
+Plug 'junegunn/goyo.vim'
 Plug 'deris/vim-duzzle'
 
 call plug#end()

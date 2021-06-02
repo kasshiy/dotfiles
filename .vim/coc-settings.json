@@ -32,13 +32,95 @@
 				"languageServerHaskell": {
 					"hlintOn": true,
 					"maxNumberOfProblems": 10,
-					"completionSnippetsOn": true
+					"completionSnippetsOn": true,
+					"checkParents": "CheckOnSaveAndClose",
+					"diagnosticsOnChange": true,
+					"diagnosticsDebounceDuration": 350000,
+					"liquidOn": false,
+					"plugin": {
+						"ghcide-code-actions": {
+							"codeActionsOn": true,
+							"globalOn": true
+						},
+						"importLens": {
+							"codeActionsOn": true,
+							"globalOn": true,
+							"codeLensOn": true
+						},
+						"ghcide-hover-and-symbols": {
+							"hoverOn": true,
+							"symbolsOn": true,
+							"globalOn": true
+						},
+						"splice": {
+							"codeActionsOn": true,
+							"globalOn": true
+						},
+						"retrie": {
+							"codeActionsOn": true,
+							"globalOn": true
+						},
+						"hlint": {
+							"codeActionsOn": true,
+							"globalOn": true
+						},
+						"haddockComments": {
+							"codeActionsOn": true,
+							"globalOn": true
+						},
+						"eval": {
+							"globalOn": true,
+							"codeLensOn": true
+						},
+						"class": {
+							"codeActionsOn": true,
+							"globalOn": true
+						},
+						"ghcide-completions": {
+							"completionOn": true,
+							"globalOn": true,
+							"config": {
+								"autoExtendOn": true,
+								"snippetsOn": true
+							}
+						},
+						"ghcide-type-lenses": {
+							"globalOn": true,
+							"config": {
+								"mode": "always"
+							},
+							"codeLensOn": true
+						},
+						"tactics": {
+							"codeActionsOn": true,
+							"globalOn": true,
+							"config": {
+								"max_use_ctor_actions": 5,
+								"features": "",
+								"timeout_duration": 2,
+								"hole_severity": null
+							}
+						},
+						"pragmas": {
+							"codeActionsOn": true,
+							"completionOn": true,
+							"globalOn": true
+						},
+						"moduleName": {
+							"globalOn": true,
+							"codeLensOn": true
+						}
+					},
+					"formatOnImportOn": true,
+					"checkProject": true,
+					"maxCompletions": 40
 				}
 			}
 		}
 	},
 	"clangd.path": "/home/kasshi_k/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
 	"snippets.ultisnips.directories": [
-		"UltiSnips"
+		"UltiSnips",
+		"gosnippets/UltiSnips"
 	]
 }
