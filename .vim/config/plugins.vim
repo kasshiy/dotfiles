@@ -46,3 +46,11 @@ Plug 'deris/vim-duzzle'
 call plug#end()
 
 packadd! matchit
+
+if has('nvim')
+
+call plug#begin()
+Plug 'kdheepak/lazygit.nvim'
+call plug#end()
+
+end
