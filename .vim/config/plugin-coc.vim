@@ -21,7 +21,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = 'tab><''>'
+let g:coc_snippet_next = '<TAB>'
 
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
@@ -101,3 +101,6 @@ command! -nargs=0 OR   :call   CocAction('runCommand', 'editor.action.organizeIm
 nmap <silent> \\f  :<C-u>CocFzfList<cr>
 " Resume latest coc list
 nmap <silent> \\p  :<C-u>CocFzfListResume<CR>
+
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<Down>"
