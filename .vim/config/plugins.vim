@@ -43,14 +43,12 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'junegunn/goyo.vim'
 Plug 'deris/vim-duzzle'
 
+if has('nvim')
+
+Plug 'kdheepak/lazygit.nvim'
+
+end
+
 call plug#end()
 
 packadd! matchit
-
-if has('nvim')
-
-call plug#begin()
-Plug 'kdheepak/lazygit.nvim'
-call plug#end()
-
-end
