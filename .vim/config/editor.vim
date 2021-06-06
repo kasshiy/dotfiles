@@ -48,12 +48,15 @@ set tagcase=followscs
 
 let mapleader = " "
 
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-nmap <silent> \<space>t :tab terminal<CR>
-nmap <silent> [b :bn<CR><Esc>
-nmap <silent> ]b :bp<CR><Esc>
-nmap <silent> [t :tabnext<CR><Esc>
-nmap <silent> ]t :tabprevious<CR><Esc>
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> \<space>t :tab terminal<CR>
+nnoremap <silent> [b :bn<CR><Esc>
+nnoremap <silent> ]b :bp<CR><Esc>
+nnoremap <silent> bd :bd<CR><Esc>
+nnoremap <silent> [t :tabnext<CR><Esc>
+nnoremap <silent> ]t :tabprevious<CR><Esc>
+nnoremap <silent> tn :tabnew<CR><Esc>
+
 "search in visualmode
 vmap # y/<C-R>"<CR>
 

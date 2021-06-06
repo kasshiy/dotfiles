@@ -2,6 +2,7 @@ call plug#begin()
 
 Plug 'guns/xterm-color-table.vim'
 Plug 'hachy/eva01.vim'
+Plug 'tomasr/molokai'
 Plug 'joshdick/onedark.vim'
 
 Plug 'vim-airline/vim-airline'
@@ -43,11 +44,7 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'junegunn/goyo.vim'
 Plug 'deris/vim-duzzle'
 
-if has('nvim')
-
 Plug 'kdheepak/lazygit.nvim'
-
-end
 
 call plug#end()
 

@@ -14,3 +14,5 @@ let g:EasyMotion_force_csapprox = 1
 
 au ColorScheme * hi link EasyMotionMoveHL EndOfBuffer
 au ColorScheme * hi link EasyMotionIncSearch EndOfBuffer
+autocmd User EasyMotionPromptBegin silent! CocDisable
+autocmd User EasyMotionPromptEnd   silent! CocEnable

@@ -15,5 +15,6 @@ au ColorScheme * hi Folded ctermbg=NONE guibg=NONE
 au ColorScheme * hi EndOfBuffer ctermbg=NONE guibg=NONE
 
 au ColorScheme * hi MatchParen cterm=bold ctermfg=214 ctermbg=black gui=bold guifg=#262626 guibg=#ABB2FB
-au ColorScheme * hi Visual term=reverse cterm=bold ctermfg=119 ctermbg=241 gui=bold guifg=#76FF03 guibg=#602040
+au ColorScheme * hi Visual term=reverse cterm=underline,bold ctermfg=119 ctermbg=241 gui=bold guifg=#5b991f guibg=NONE
 au ColorScheme * hi IncSearch term=reverse cterm=bold ctermfg=16 ctermbg=119 gui=bold guifg=#000000 guibg=#E5C07B
+

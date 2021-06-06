@@ -10,7 +10,7 @@ let g:quickrun_config = {
 \     "hook/time/enable" : 1,
 \   },
 \}
-let g:quickrun_config.haskell = {'command' : 'stack','cmdopt': 'runhaskell'}
+let g:quickrun_config.haskell = {'command' : 'stack','cmdopt': 'run'}
 
 nnoremap <silent> <F5> :QuickRun -mode n<CR>
 vnoremap <silent> <F5> :QuickRun -mode v<CR>
