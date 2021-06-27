@@ -102,5 +102,7 @@ nmap <silent> \\f  :<C-u>CocFzfList<cr>
 " Resume latest coc list
 nmap <silent> \\p  :<C-u>CocFzfListResume<CR>
 
+au ColorScheme * hi CocHighlightText guibg=#666666
+
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<Down>"
+let g:UltiSnipsExpandTrigger="<End>"

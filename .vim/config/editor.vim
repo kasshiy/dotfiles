@@ -61,3 +61,4 @@ nnoremap <silent> tn :tabnew<CR><Esc>
 vmap # y/<C-R>"<CR>
 
 command! Reload source ~/.vimrc
+command! LgPop term ++hidden ++shell ++close tmux popup -E -w 170 -h 35 -d (pwd) "lazygit"

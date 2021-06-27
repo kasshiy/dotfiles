@@ -129,20 +129,15 @@ source $HOME/.keychain/$HOSTNAME-sh
 
 #end
 
+neofetch
+read
+
 tmux_count=$(ps -ef | grep '[t]mux' | wc -l)
 if [[ $SHLVL = 1 && $tmux_count = 0 ]]; then
-    read
     tmux new-session
 elif [[ $SHLVL = 1 && $tmux_count = 1 ]]; then
-    echo "Please Enter Starting Mode"
-    read SESINAME
-    if [[ $SESINAME = "" ]]; then
-        echo "Tmux attatched"
-        tmux a
-    elif [[ $SESINAME = "-" ]]; then
-        echo "only bash mode"
-    else
-        tmux a -t $SESINAME 2>/dev/null
-    fi
+    tmux a
+else
+    clear
 fi
 #myfunctions
