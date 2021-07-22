@@ -2,7 +2,7 @@ call plug#begin()
 
 Plug 'guns/xterm-color-table.vim'
 Plug 'hachy/eva01.vim'
-Plug 'tomasr/molokai'
+Plug 'machakann/vim-highlightedyank'
 Plug 'joshdick/onedark.vim'
 
 Plug 'vim-airline/vim-airline'
@@ -27,7 +27,6 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'neovimhaskell/haskell-vim'
 
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-ref'
@@ -38,6 +37,7 @@ Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ueokande/popupdict.vim'
 
 Plug 'vim-jp/vimdoc-ja'
 

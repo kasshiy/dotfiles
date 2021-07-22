@@ -56,9 +56,12 @@ nnoremap <silent> bd :bd<CR><Esc>
 nnoremap <silent> [t :tabnext<CR><Esc>
 nnoremap <silent> ]t :tabprevious<CR><Esc>
 nnoremap <silent> tn :tabnew<CR><Esc>
+nnoremap <silent> lg :LgPop<CR><Esc>
 
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
 command! Reload source ~/.vimrc
 command! LgPop term ++hidden ++shell ++close tmux popup -E -w 170 -h 35 -d (pwd) "lazygit"
+
+au VimEnter * let g:popupdict_enabled=0

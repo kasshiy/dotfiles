@@ -129,7 +129,6 @@ source $HOME/.keychain/$HOSTNAME-sh
 
 #end
 
-neofetch
 read
 
 tmux_count=$(ps -ef | grep '[t]mux' | wc -l)
@@ -138,6 +137,8 @@ if [[ $SHLVL = 1 && $tmux_count = 0 ]]; then
 elif [[ $SHLVL = 1 && $tmux_count = 1 ]]; then
     tmux a
 else
-    clear
+    tmux a
 fi
 #myfunctions
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

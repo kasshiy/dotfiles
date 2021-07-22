@@ -192,3 +192,5 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose >/dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
