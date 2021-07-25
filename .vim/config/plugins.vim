@@ -3,7 +3,7 @@ call plug#begin()
 Plug 'guns/xterm-color-table.vim'
 Plug 'hachy/eva01.vim'
 Plug 'machakann/vim-highlightedyank'
-Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim',{ 'branch': 'main' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -28,9 +28,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neovimhaskell/haskell-vim'
 
 Plug 'honza/vim-snippets'
-Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-ref'
 Plug 'ujihisa/ref-hoogle'
+
+Plug 'vhdirk/vim-cmake'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'kasshiy/sprint',{ 'branch': 'dev' }
 
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }

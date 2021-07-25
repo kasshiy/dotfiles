@@ -129,6 +129,7 @@ source $HOME/.keychain/$HOSTNAME-sh
 
 #end
 
+echo "Enter any key....."
 read
 
 tmux_count=$(ps -ef | grep '[t]mux' | wc -l)

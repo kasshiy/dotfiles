@@ -194,3 +194,4 @@ fi
 zplug load --verbose >/dev/null
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -e /home/kasshi_k/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kasshi_k/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
