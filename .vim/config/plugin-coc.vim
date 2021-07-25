@@ -72,11 +72,11 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<silent> \aap` for current paragraph
-xmap <silent> \a  <Plug>(coc-codeaction-selected)
-nmap <silent> \a  <Plug>(coc-codeaction-selected)
+xmap <silent> \ac  <Plug>(coc-codeaction-selected)
+nmap <silent> \ac <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <silent> \ac  <Plug>(coc-codeaction)
+nmap <silent> \a  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <silent> \qf  <Plug>(coc-fix-current)
 

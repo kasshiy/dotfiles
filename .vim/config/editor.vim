@@ -12,6 +12,7 @@ set mouse=a
 set scrolloff=3
 set ttimeoutlen=50
 set ttyfast
+set lz
 
 set expandtab
 set tabstop=2
@@ -21,12 +22,12 @@ set bri
 set shiftwidth=2
 set matchtime=2
 set matchpairs+=":",':'
+set listchars=precedes:^
 set laststatus=2
 
 set number
 set cursorline
 set virtualedit=onemore
-set emoji
 
 set wildmenu
 set history=10000
@@ -56,12 +57,14 @@ nnoremap <silent> bd :bd<CR><Esc>
 nnoremap <silent> [t :tabnext<CR><Esc>
 nnoremap <silent> ]t :tabprevious<CR><Esc>
 nnoremap <silent> tn :tabnew<CR><Esc>
-nnoremap <silent> \lg :LgPop<CR><Esc>
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> \lg :TermPop lazygit<CR><Esc>
 
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-command! Reload source ~/.vimrc
-command! LgPop term ++hidden ++shell ++close tmux popup -E -w 170 -h 35 -d (pwd) "lazygit"
+command! Rel source ~/.vimrc
+command! -nargs=* TermPop term ++hidden ++close ++norestore ++shell tmux popup -E -w 170 -h 35 -d (pwd) <q-args>
 
 au VimEnter * let g:popupdict_enabled=0

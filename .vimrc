@@ -14,4 +14,4 @@ let g:asyncrun_status = ''
 let g:airline_section_error = g:airline#section#create_right(['%{g:asyncrun_status}'])
 
 " Use <c-space> to trigger completion.
-imap <silent><expr> <c-space> coc#refresh()
+imap <silent><expr> <c-@> coc#refresh()
