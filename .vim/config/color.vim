@@ -16,6 +16,8 @@ au ColorScheme * hi CursorLineNr ctermbg=NONE cterm=italic guifg=#E07307 gui=ita
 au ColorScheme * hi Folded ctermbg=NONE guibg=NONE
 au ColorScheme * hi EndOfBuffer ctermbg=NONE guibg=NONE
 
-au ColorScheme * hi MatchParen cterm=bold ctermfg=214 gui=bold guifg=#262626 guibg=#ABB2FB
+au ColorScheme * hi MatchParen gui=bold term=bold ctermbg=110 guifg=#84a0c6
+au ColorScheme * hi QuickFixLine guifg=#84a0c6 guibg=NONE term=bold
 au ColorScheme * hi Visual term=reverse cterm=bold ctermfg=119 ctermbg=241 gui=bold guifg=#30C250 guibg=#3C6514
-au ColorScheme * hi IncSearch term=reverse cterm=bold ctermfg=16 ctermbg=119 gui=bold guifg=#000000 guibg=#E5C07B
+au ColorScheme * hi IncSearch term=reverse cterm=bold ctermfg=16 ctermbg=119 gui=bold guifg=#101010 guibg=#D3B071
+au ColorScheme * hi Search gui=bold guibg=#84a0c6 guifg=#101010

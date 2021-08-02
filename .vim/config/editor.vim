@@ -49,22 +49,22 @@ set tagcase=followscs
 
 let mapleader = " "
 
-nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
-nnoremap <silent> \t :tab terminal<CR>
-nnoremap <silent> [b :bn<CR><Esc>
-nnoremap <silent> ]b :bp<CR><Esc>
-nnoremap <silent> bd :bd<CR><Esc>
-nnoremap <silent> [t :tabnext<CR><Esc>
-nnoremap <silent> ]t :tabprevious<CR><Esc>
-nnoremap <silent> tn :tabnew<CR><Esc>
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
-nnoremap <silent> \lg :TermPop lazygit<CR><Esc>
+nn <Esc><Esc> :nohlsearch<CR><Esc>
+nn <silent> \t :TermPop
+nn <silent> [b :bn<CR><Esc>
+nn <silent> ]b :bp<CR><Esc>
+nn <silent> bd :bd<CR><Esc>
+nn <silent> [t :tabnext<CR><Esc>
+nn <silent> ]t :tabprevious<CR><Esc>
+nn <silent> tn :tabnew<CR><Esc>
+nn <silent> [q :cnewer<CR><Esc>
+nn <silent> ]q :colder<CR><Esc>
+nn <silent> \lg :TermPop lazygit<CR><Esc>
 
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-command! Rel source ~/.vimrc
+command! Reload source %
 command! -nargs=* TermPop term ++hidden ++close ++norestore ++shell tmux popup -E -w 170 -h 35 -d (pwd) <q-args>
 
 au VimEnter * let g:popupdict_enabled=0

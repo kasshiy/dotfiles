@@ -9,6 +9,7 @@
 		"graphql",
 		"haskell",
 		"html",
+		"purescript",
 		"yaml",
 		"json",
 		"python"
@@ -30,6 +31,28 @@
 			"initializationOptions": {
 				"cache": {
 					"directory": "/tmp/ccls-cache"
+				}
+			}
+		},
+		"purescript": {
+			"command": "purescript-language-server",
+			"args": [
+				"--stdio"
+			],
+			"filetypes": [
+				"purescript"
+			],
+			"trace.server": "off",
+			"rootPatterns": [
+				"bower.json",
+				"psc-package.json",
+				"spago.dhall"
+			],
+			"settings": {
+				"purescript": {
+					"addSpagoSources": true,
+					"addNpmPath": true // Set to true if using a local purty install for formatting
+					// etc
 				}
 			}
 		},
@@ -143,8 +166,5 @@
 	"clangd.path": "/home/kasshi_k/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
 	"clangd.semanticHighlighting": true,
 	"cmake.lsp.enable": true,
-	"snippets.ultisnips.directories": [
-		"UltiSnips",
-		"gosnippets/UltiSnips"
-	]
+	"snippets.userSnippetsDirectory": "~/.vim/snippets/"
 }

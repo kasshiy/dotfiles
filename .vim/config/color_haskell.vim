@@ -1,7 +1,7 @@
-au ColorScheme * hi haskellWhere guifg=#58A0B0
-au ColorScheme * hi haskellDeriveKeyword guifg=#58A0B0
+au ColorScheme * hi link haskellWhere Include
+au ColorScheme * hi link haskellDeriveKeyword Include
 au ColorScheme * hi haskellDecl guifg=#EBA500
-au ColorScheme * hi haskellDeclKeyword guifg=#EBA500
+au ColorScheme * hi link haskellDeclKeyword haskellDecl
 au ColorScheme * hi haskellConditional gui=italic
 au ColorScheme * hi haskellKeyword cterm=italic gui=italic guifg=#C993FF
 

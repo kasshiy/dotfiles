@@ -8,7 +8,7 @@ nmap <C-e> <plug>NERDTreeTabsToggle<CR>:setlocal signcolumn=no<CR>
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeCascadeOpenSingleChildDir = 1
 let g:NERDTreeStatusline="%{exists('b:NERDTree')?b:NERDTree.root.path.str():'NERDTree'}"
-let g:NERDTreeIgnore = ['\.git$','\.stack-work$','\.vscode', '\~$','\.o','\.cache$']
+let g:NERDTreeIgnore = ['\.git$','\.stack-work$','\.spago$','\.vscode', '\~$','\.o','\.cache$']
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeWinSize = 37
 

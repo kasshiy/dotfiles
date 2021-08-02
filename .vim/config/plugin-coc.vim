@@ -72,8 +72,7 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<silent> \aap` for current paragraph
-xmap <silent> \ac  <Plug>(coc-codeaction-selected)
-nmap <silent> \ac <Plug>(coc-codeaction-selected)
+xmap <silent> \a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <silent> \a  <Plug>(coc-codeaction)
@@ -84,7 +83,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <C-d> <Plug>(coc-range-select)

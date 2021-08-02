@@ -16,3 +16,5 @@
     InsteadOf = git@github.com:
 [fetch]
 	prune = true
+[init]
+	defaultBranch = main
