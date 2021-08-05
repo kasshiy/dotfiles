@@ -50,7 +50,7 @@ set tagcase=followscs
 let mapleader = " "
 
 nn <Esc><Esc> :nohlsearch<CR><Esc>
-nn <silent> \t :TermPop
+nn \t :TermPop
 nn <silent> [b :bn<CR><Esc>
 nn <silent> ]b :bp<CR><Esc>
 nn <silent> bd :bd<CR><Esc>

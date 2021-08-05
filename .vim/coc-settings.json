@@ -81,6 +81,7 @@
 					"checkParents": "CheckOnSaveAndClose",
 					"diagnosticsOnChange": true,
 					"diagnosticsDebounceDuration": 350000,
+					"formattingProvider": "ormolu",
 					"liquidOn": false,
 					"plugin": {
 						"ghcide-code-actions": {
