@@ -70,7 +70,7 @@ __run_earthquake() {
       echo "Unknown earthquake-information provider [${EARTHQUAKE_DATA_PROVIDER}]";
       return 1
   esac
-  if [ -n "$earthquake" ] && [$scale -ge 30] ; then
+  if [ -n "$earthquake" ] ; then
     echo "${earthquake}"
   fi
 }
@@ -95,7 +95,7 @@ __p2pquake_earthquake() {
   if [ -z "$magnitude" ]; then
     # get the rss file
     data=$(curl --max-time 4 -s "https://api.p2pquake.net/v2/jma/quake?limit=${EARTHQUAKE_GET_DATA_LIMIT}&min_scale=${EARTHQUAKE_MIN_SCALE}")
-    
+
     if [ "$?" -eq "0" ]; then
       location=$(echo $data | jq -r .[].earthquake.hypocenter.name)
       magnitude=$(echo $data | jq .[].earthquake.hypocenter.magnitude)

@@ -1,13 +1,12 @@
-nnoremap <silent> <F1> :Helptags<CR>
-nnoremap <silent> \ag :Ag<CR>
-nnoremap <silent> \fb :Buffers<CR>
-nnoremap <silent> \ff :Files<CR>
-nnoremap <silent> \fg :FzfPreviewGitActionsRpc<CR>
-nnoremap <silent> \fh :History<CR>
-nnoremap <silent> \fw :Windows<CR>
+nn <silent> <F1> :Helptags<CR>
+nn <silent> \ag :Ag<CR>
+nn <silent> \fb :Buffers<CR>
+nn <silent> \ff :Files<CR>
+nn <silent> \fh :History<CR>
+nn <silent> \fw :Windows<CR>
 
-"if exists('$TMUX')
-"  let g:fzf_layout = { 'tmux': '-p90%,70%' }
-"else
+if exists('$TMUX')
+  let g:fzf_layout = { 'tmux': '-p90%,75%' }
+else
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
-"endif
+endif

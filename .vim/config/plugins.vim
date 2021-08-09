@@ -19,7 +19,6 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
@@ -45,6 +44,7 @@ Plug 'ueokande/popupdict.vim'
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'deris/vim-duzzle'
 
 Plug 'kdheepak/lazygit.nvim'
