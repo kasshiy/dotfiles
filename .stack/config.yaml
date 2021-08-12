@@ -1,0 +1,13 @@
+templates:
+  params: null
+  scm-init: git
+
+system-ghc: true
+install-ghc: false
+
+ghc-options:
+    # All packages
+    "$locals": -Wall
+    "$targets": -Werror
+    "$everything": -O2 -haddock
+
