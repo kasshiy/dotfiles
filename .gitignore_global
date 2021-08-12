@@ -1,3 +1,4 @@
-*.stack/
 git-worktrees/
 git-worktree/
+node_modules/
+.stack-work/
