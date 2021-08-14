@@ -12,7 +12,7 @@ au ColorScheme * hi Comment cterm=italic gui=italic
 au ColorScheme * hi Normal ctermbg=NONE guibg=NONE
 au ColorScheme * hi NonText ctermbg=NONE guibg=NONE
 au ColorScheme * hi LineNr ctermbg=NONE cterm=italic guibg=NONE gui=italic
-au ColorScheme * hi CursorLineNr ctermbg=NONE cterm=italic guifg=#E07307 gui=italic
+au ColorScheme * hi CursorLineNr ctermbg=NONE cterm=italic guibg=NONE guifg=#E07307 gui=italic
 au ColorScheme * hi Folded ctermbg=NONE guibg=NONE
 au ColorScheme * hi EndOfBuffer ctermbg=NONE guibg=NONE
 

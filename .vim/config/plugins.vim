@@ -35,20 +35,18 @@ Plug 'vhdirk/vim-cmake'
 Plug 'skywind3000/asyncrun.vim'
 "Plug 'kasshiy/sprint',{ 'branch': 'dev' }
 
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ueokande/popupdict.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 
+Plug 'ueokande/popupdict.vim'
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'deris/vim-duzzle'
-
-Plug 'kdheepak/lazygit.nvim'
 
 call plug#end()
 

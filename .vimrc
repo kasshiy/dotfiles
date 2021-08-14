@@ -12,3 +12,5 @@ let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}'. "\u
 
 " Use <c-space> to trigger completion.
 imap <silent><expr> <c-@> coc#refresh()
+
+silent! nohlsearch

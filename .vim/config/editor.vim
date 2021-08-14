@@ -52,13 +52,17 @@ let mapleader = " "
 nn <Esc><Esc> :nohlsearch<CR><Esc>
 nn <silent> bd :bd<CR><Esc>
 nn <silent> tn :tabnew<CR><Esc>
+nn <silent> [oq :copen<CR><Esc>
+nn <silent> ]oq :cclose<CR><Esc>
+nn <silent> [Q :colder<CR><Esc>
+nn <silent> ]Q :cnewer<CR><Esc>
 nn <silent> \lg :TermPop lazygit<CR><Esc>
 nn \t :TermPop
 
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-command! Reload source %
-command! -nargs=* TermPop term ++hidden ++close ++norestore ++shell tmux popup -w 170 -h 35 -d (pwd) <q-args>
+command! Reload source ~/.vimrc
+command! -nargs=* TermPop term ++hidden ++close ++norestore ++shell tmux popup -E -w 170 -h 35 -d (pwd) <q-args>
 
 au VimEnter * let g:popupdict_enabled=0
