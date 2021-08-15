@@ -1,0 +1,109 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'guns/xterm-color-table.vim'
+[[plugins]]
+repo = 'hachy/eva01.vim'
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+[[plugins]]
+repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'mhinz/vim-startify'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+[[plugins]]
+repo = 'tpope/vim-repeat'
+[[plugins]]
+repo = 'markonm/traces.vim'
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+hook_post_update = "call fzf#install()"
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+
+[[plugins]]
+repo = 'andymass/vim-matchup'
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+[[plugins]]
+repo = 'nvim-lua/completion-nvim'
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_update = "TSUpdate"
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+[[plugins]]
+repo = 'nvim-lua/lsp-status.nvim'
+[[plugins]]
+repo = 'glepnir/lspsaga.nvim'
+[[plugins]]
+repo = 'onsails/lspkind-nvim'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+[[plugins]]
+repo = 'neovimhaskell/haskell-vim'
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+hook_post_update = 'call mkdp#util#install()'
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'vhdirk/vim-cmake'
+[[plugins]]
+repo = 'skywind3000/asyncrun.vim'
+[[plugins]]
+repo = 'ronakg/quickr-preview.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+[[plugins]]
+repo = 'lambdalisue/glyph-palette.vim'
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+[[plugins]]
+repo = 'lambdalisue/fern-bookmark.vim'
+[[plugins]]
+repo = 'lambdalisue/fern-hijack.vim'
+[[plugins]]
+repo = 'lambdalisue/fern-mapping-quickfix.vim'
+[[plugins]]
+repo = 'LumaKernel/fern-mapping-fzf.vim'
+[[plugins]]
+repo = 'antoinemadec/FixCursorHold.nvim'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'junegunn/goyo.vim'
+[[plugins]]
+repo = 'junegunn/limelight.vim'
+
+[[plugins]]
+repo = 'deris/vim-duzzle'
