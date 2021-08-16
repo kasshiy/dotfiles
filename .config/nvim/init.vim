@@ -10,6 +10,7 @@ set runtimepath+=/home/kasshi_k/.cache/dein/repos/github.com/Shougo/dein.vim
 call dein#begin('/home/kasshi_k/.cache/dein')
 
   " Let dein manage dein
+  call dein#add('glacambre/firenvim', { 'hook_post_update': { _ -> firenvim#install(0) } })
   call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
   call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
 
