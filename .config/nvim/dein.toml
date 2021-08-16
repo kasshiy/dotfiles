@@ -11,8 +11,11 @@ repo = 'machakann/vim-highlightedyank'
 repo = 'cocopon/iceberg.vim'
 [[plugins]]
 repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
+
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
@@ -34,12 +37,27 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-unimpaired'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'kdheepak/lazygit.nvim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
 hook_post_update = "call fzf#install()"
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+[[plugins]]
+repo = 'nvim-telescope/telescope-fzf-native.nvim'
+hook_post_update = "make"
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+[[plugins]]
+repo = 'nvim-lua/popup.nvim'
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+[[plugins]]
+repo = 'nvim-telescope/telescope-frecency.nvim'
+[[plugins]]
+repo = 'tami5/sql.nvim'
 
 [[plugins]]
 repo = 'andymass/vim-matchup'
