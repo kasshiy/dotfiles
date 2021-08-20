@@ -5,11 +5,16 @@ nn <silent> ,fb :Telescope buffers<cr>
 nn <silent> ,fh :Telescope oldfiles<cr>
 nn <silent> ,fe :Telescope file_browser<cr>
 nn <silent> ,fp :Telescope project<CR>
-nn <silent> ,fr :Telescope frecency<CR>
 nn <silent> ,ft :Telescope<CR>
 nn <silent> ,fy :Telescope symbols<CR>
 
 "nn <silent> ,fa :lua require('telescope').extensions.arecibo.websearch()<CR>
 "nn <silent> ,fd :lua require('config.telescope').search_dotfiles()<CR>
 "nn <silent> ,fx :lua require('config.telescope').switch_projects()<CR>
+
+let g:dashboard_default_executive ='telescope'
+let g:indentLine_fileTypeExclude = ['dashboard']
+
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
 

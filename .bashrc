@@ -121,6 +121,7 @@ fi
 #---------------------------------------------------------------/
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.nix-profile/bin:$PATH"
 
 # start ssh-agent in the background
 
@@ -129,6 +130,7 @@ source $HOME/.keychain/$HOSTNAME-sh
 
 #end
 
+nix-env -u&
 echo "Enter any key....."
 read
 
@@ -143,3 +145,4 @@ fi
 #myfunctions
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

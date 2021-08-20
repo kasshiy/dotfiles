@@ -22,5 +22,19 @@ au ColorScheme eva01-LCL hi QuickFixLine guifg=#84a0c6 guibg=NONE term=bold
 au ColorScheme eva01-LCL hi Visual term=reverse cterm=bold ctermfg=119 ctermbg=241 gui=bold guifg=#30C250 guibg=#3C6514
 au ColorScheme eva01-LCL hi IncSearch term=reverse cterm=bold ctermfg=16 ctermbg=119 gui=bold guifg=#101010 guibg=#D3B071
 au ColorScheme eva01-LCL hi Search gui=bold guibg=#84a0c6 guifg=#101010
+au ColorScheme eva01-LCL hi Pmenu guifg=#D7D1DC guibg=#101010
+
+""""""""""""""""""""
+"     haskell      "
+""""""""""""""""""""
+au ColorScheme * hi link haskellWhere Include
+au ColorScheme * hi link haskellDeriveKeyword Include
+au ColorScheme eva01-LCL hi haskellDecl guifg=#EBA500
+au ColorScheme * hi link haskellDeclKeyword haskellDecl
+au ColorScheme eva01-LCL hi haskellKeyword cterm=italic gui=italic guifg=#C993FF
+
+au ColorScheme * hi link haskellNumber Normal
+au ColorScheme * hi link haskellDelimiter Normal
+au ColorScheme * hi link haskellPragma SpecialComment
 
 colorscheme eva01-LCL

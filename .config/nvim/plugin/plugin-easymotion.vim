@@ -1,24 +1,17 @@
-map <Leader> <Plug>(easymotion-prefix)
+lua << EOF
+  require'hop'.setup()
+EOF
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+nmap  / <cmd>HopPattern<CR>
+xmap  / <cmd>HopPattern<CR>
 
-map  [n <Plug>(easymotion-prev)
-map  ]n <Plug>(easymotion-next)
+nmap <leader>f <cmd>HopChar1AC<CR>
+nmap <leader>t <cmd>HopChar1BC<CR>
+nmap <leader>s <cmd>HopChar1<CR>
 
-let g:EasyMotion_keys = 'asdfghjkl;qwertyuiopzxcvbnm'
+nmap <leader>j <cmd>HopLineStartAC<CR>
+nmap <leader>k <cmd>HopLineStartBC<CR>
+nmap <leader>m <cmd>HopLine<CR>
 
-let g:EasyMotion_use_upper = 1
-let g:EasyMotion_smartcase = 1
-
-let g:EasyMotion_use_smartsign_jp = 1  "にほんご layout
-let g:EasyMotion_use_migemo = 1
-
-let g:EasyMotion_force_csapprox = 1
-
-EMCommandLineNoreMap ; <CR>
-EMCommandLineNoreMap <C-j> ;
-EMCommandLineNoreMap <C-d> <Over>(buffer-complete)
-
-au ColorScheme * hi link EasyMotionMoveHL EndOfBuffer
-au ColorScheme * hi link EasyMotionIncSearch EndOfBuffer
+nmap <leader>w <cmd>HopWordAC<CR>
+nmap <leader>b <cmd>HopWordBC<CR>

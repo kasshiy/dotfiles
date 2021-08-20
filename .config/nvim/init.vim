@@ -10,14 +10,15 @@ set runtimepath+=/home/kasshi_k/.cache/dein/repos/github.com/Shougo/dein.vim
 call dein#begin('/home/kasshi_k/.cache/dein')
 
   " Let dein manage dein
-  call dein#add('glacambre/firenvim', { 'hook_post_update': { _ -> firenvim#install(0) } })
+  call dein#add('glacambre/firenvim', { 'hook_post_update': { -> firenvim#install(0) } })
   call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
   call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
 
 call dein#end()
 
 let g:completion_enable_auto_popup = 1
-luafile ~/.config/nvim/lua/complete.lua
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
@@ -27,6 +28,7 @@ endif
 if !has('nvim')
   set ttymouse=xterm2
 endif
+set pumblend=10
 
 function! s:auto_update_colorscheme(...) abort
     if &ft !=# 'vim'

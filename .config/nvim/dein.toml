@@ -1,5 +1,8 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+hook_add = '''
+  let g:dein#install_progress_type = "title"
+'''
 
 [[plugins]]
 repo = 'guns/xterm-color-table.vim'
@@ -10,6 +13,8 @@ repo = 'machakann/vim-highlightedyank'
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 [[plugins]]
+repo = 'ulwlu/elly.vim'
+[[plugins]]
 repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
 
 [[plugins]]
@@ -18,18 +23,13 @@ repo = 'vim-airline/vim-airline'
 repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
-repo = 'mhinz/vim-startify'
-
-[[plugins]]
 repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tpope/vim-repeat'
 [[plugins]]
 repo = 'markonm/traces.vim'
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
-[[plugins]]
-repo = 'ntpeters/vim-better-whitespace'
+repo = 'phaazon/hop.nvim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -57,14 +57,21 @@ repo = 'nvim-telescope/telescope.nvim'
 [[plugins]]
 repo = 'nvim-telescope/telescope-frecency.nvim'
 [[plugins]]
+repo = 'nvim-telescope/telescope-symbols.nvim'
+[[plugins]]
 repo = 'tami5/sql.nvim'
+[[plugins]]
+repo = 'glepnir/dashboard-nvim'
 
 [[plugins]]
 repo = 'andymass/vim-matchup'
 [[plugins]]
+repo = 'anott03/nvim-lspinstall'
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
 [[plugins]]
 repo = 'nvim-lua/completion-nvim'
+hook_add = 'let g:completion_enable_auto_paren = 1'
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_post_update = "TSUpdate"
@@ -76,11 +83,19 @@ repo = 'nvim-lua/lsp-status.nvim'
 repo = 'glepnir/lspsaga.nvim'
 [[plugins]]
 repo = 'onsails/lspkind-nvim'
+[[plugins]]
+repo = 'b3nj5m1n/kommentary'
+hook_add = '''
+lua require('kommentary.config').use_extended_mappings()
+'''
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 [[plugins]]
 repo = 'neovimhaskell/haskell-vim'
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_add = 'let g:rustfmt_autosave = 1'
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
 hook_post_update = 'call mkdp#util#install()'

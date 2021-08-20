@@ -28,3 +28,4 @@ fi
 if [ -e /home/kasshi_k/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kasshi_k/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 alias luamake=/home/kasshi_k/.ghq/github.com/kasshiy/attocalc/lua-language-server/3rd/luamake/luamake
+. "$HOME/.cargo/env"
