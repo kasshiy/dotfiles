@@ -9,6 +9,7 @@
 [core]
 	editor = vim
 	excludesfile = /home/kasshi_k/.gitignore_global
+	pager = "delta --dark --plus-color=\"#012800\" --minus-color=\"#340001\" --theme=\"DarkNeon\""
 [ghq]
     root = ~/.ghq
 [url "github:"]

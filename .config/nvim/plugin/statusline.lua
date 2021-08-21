@@ -124,7 +124,7 @@ gls.left[1] = {
 gls.left[2] = {
   ViMode = {
     provider = function()
-      local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', ['<C-v>'] = 'VISUAL BLOCK'}
+      local alias = {n = ' NORMAL',i = ' INSERT',c= ' COMMAND',v= ' VISUAL',V= ' VISUAL LINE', ['<C-v>'] = ' VISUAL BLOCK'}
       return alias[vim.fn.mode()]
     end,
     separator = '',
@@ -150,7 +150,7 @@ gls.left[4] = {
     condition = buffer_not_empty,
     separator = '',
     separator_highlight = {colors.purple,colors.darkblue},
-    highlight = {colors.magenta,colors.darkblue}
+    highlight = {colors.glay,colors.darkblue}
   }
 }
 
