@@ -1,0 +1,18 @@
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+on = 'BufEnter'
+[[plugins]]
+repo = 'lambdalisue/fern-bookmark.vim'
+on = 'BufEnter'
+[[plugins]]
+repo = 'lambdalisue/fern-hijack.vim'
+on = 'BufEnter'
+[[plugins]]
+repo = 'lambdalisue/fern-mapping-quickfix.vim'
+on = 'BufEnter'
+[[plugins]]
+repo = 'LumaKernel/fern-mapping-fzf.vim'
+on = 'BufEnter'
+[[plugins]]
+repo = 'antoinemadec/FixCursorHold.nvim'
+on = 'BufEnter'

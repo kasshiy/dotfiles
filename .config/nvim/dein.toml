@@ -1,8 +1,5 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-hook_add = '''
-  let g:dein#install_progress_type = "title"
-'''
 
 [[plugins]]
 repo = 'guns/xterm-color-table.vim'
@@ -18,9 +15,11 @@ repo = 'ulwlu/elly.vim'
 repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
+repo = 'glepnir/galaxyline.nvim'
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
+[[plugins]]
+repo = 'romgrk/barbar.nvim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -36,7 +35,7 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'tpope/vim-unimpaired'
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'lewis6991/gitsigns.nvim'
 [[plugins]]
 repo = 'kdheepak/lazygit.nvim'
 
@@ -78,6 +77,14 @@ hook_post_update = "TSUpdate"
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 [[plugins]]
+repo = 'nvim-treesitter/playground'
+[[plugins]]
+repo = 'nvim-treesitter/completion-treesitter'
+[[plugins]]
+repo = 'nvim-treesitter-refactor'
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+[[plugins]]
 repo = 'nvim-lua/lsp-status.nvim'
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
@@ -89,8 +96,6 @@ hook_add = '''
 lua require('kommentary.config').use_extended_mappings()
 '''
 
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
 [[plugins]]
 repo = 'neovimhaskell/haskell-vim'
 [[plugins]]
@@ -117,18 +122,6 @@ repo = 'lambdalisue/nerdfont.vim'
 repo = 'lambdalisue/glyph-palette.vim'
 [[plugins]]
 repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-[[plugins]]
-repo = 'lambdalisue/fern-git-status.vim'
-[[plugins]]
-repo = 'lambdalisue/fern-bookmark.vim'
-[[plugins]]
-repo = 'lambdalisue/fern-hijack.vim'
-[[plugins]]
-repo = 'lambdalisue/fern-mapping-quickfix.vim'
-[[plugins]]
-repo = 'LumaKernel/fern-mapping-fzf.vim'
-[[plugins]]
-repo = 'antoinemadec/FixCursorHold.nvim'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'

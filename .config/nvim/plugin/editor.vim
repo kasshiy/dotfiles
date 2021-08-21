@@ -50,8 +50,6 @@ let loaded_matchit = 1
 let mapleader = " "
 
 nn <Esc><Esc> :nohlsearch<CR><Esc>
-nn <silent> bd :bwipeout<CR><Esc>
-nn <silent> tn :tabnew<CR><Esc>
 nn <silent> [oq :copen<CR><Esc>
 nn <silent> ]oq :cclose<CR><Esc>
 nn <silent> [Q :colder<CR><Esc>
