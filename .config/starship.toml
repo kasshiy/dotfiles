@@ -1,0 +1,8 @@
+add_newline = false
+
+[directory]
+style = "bold #84a0c6"
+truncation_symbol = "…/"
+
+[cmd_duration]
+style = "italic #eba500"
