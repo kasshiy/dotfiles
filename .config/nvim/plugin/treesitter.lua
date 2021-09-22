@@ -1,7 +1,10 @@
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    disable = {},
+    disable = {
+      'haskell',
+      'purescript'
+    },
   },
   matchup = {
     enable = true,

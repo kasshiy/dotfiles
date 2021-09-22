@@ -4,13 +4,13 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'guns/xterm-color-table.vim'
 [[plugins]]
-repo = 'hachy/eva01.vim'
+repo = 'kasshiy/eva01.vim'
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 [[plugins]]
-repo = 'ulwlu/elly.vim'
+repo = 'EdenEast/nightfox.nvim'
 [[plugins]]
 repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
 
@@ -58,6 +58,21 @@ repo = 'nvim-telescope/telescope-frecency.nvim'
 [[plugins]]
 repo = 'nvim-telescope/telescope-symbols.nvim'
 [[plugins]]
+repo = 'nvim-telescope/telescope-hop.nvim'
+hook_add = '''
+lua require'telescope'.load_extension'hop'
+'''
+[[plugins]]
+repo = 'nvim-telescope/telescope-github.nvim'
+hook_add = '''
+lua require'telescope'.load_extension'gh'
+'''
+[[plugins]]
+repo = 'nvim-telescope/telescope-ghq.nvim'
+hook_add = '''
+lua require'telescope'.load_extension'ghq'
+'''
+[[plugins]]
 repo = 'tami5/sql.nvim'
 [[plugins]]
 repo = 'glepnir/dashboard-nvim'
@@ -66,8 +81,25 @@ repo = 'glepnir/dashboard-nvim'
 repo = 'andymass/vim-matchup'
 [[plugins]]
 repo = 'anott03/nvim-lspinstall'
+hook_add = '''
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+'''
 [[plugins]]
-repo = 'neovim/nvim-lspconfig'
+repo = 'kasshiy/nvim-lspconfig'
 [[plugins]]
 repo = 'nvim-lua/completion-nvim'
 hook_add = 'let g:completion_enable_auto_paren = 1'
@@ -99,8 +131,12 @@ lua require('kommentary.config').use_extended_mappings()
 [[plugins]]
 repo = 'neovimhaskell/haskell-vim'
 [[plugins]]
+repo = 'purescript-contrib/purescript-vim' 
+[[plugins]]
 repo = 'rust-lang/rust.vim'
 hook_add = 'let g:rustfmt_autosave = 1'
+[[plugins]]
+repo = 'simrat39/rust-tools.nvim' 
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
 hook_post_update = 'call mkdp#util#install()'

@@ -1,7 +1,5 @@
 set nobackup
 set noswapfile
-set undofile
-set undodir=~/.vim/undo
 
 set hidden
 set mouse=a
@@ -30,19 +28,22 @@ set clipboard=unnamed
 set completeopt=menuone,noinsert,noselect
 
 if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
+  tnoremap <Esc> <C-\><C-n>
+  set undofile
+  set undodir=~/.vim/undo
 else
-    set wildmenu
-    set history=10000
-    set hls
-    set ic
-    set listchars=precedes:^
-    set encoding=utf-8
-    set autoread
-    set belloff=all
-    set ttimeoutlen=50
-    set showcmd
-    set laststatus=2
+  set wildmenu
+  set noundofile
+  set history=10000
+  set hls
+  set ic
+  set listchars=precedes:^
+  set encoding=utf-8
+  set autoread
+  set belloff=all
+  set ttimeoutlen=50
+  set showcmd
+  set laststatus=2
 endif
 "--------- mapings ---------
 
@@ -55,7 +56,9 @@ nn <silent> ]oq :cclose<CR><Esc>
 nn <silent> [Q :colder<CR><Esc>
 nn <silent> ]Q :cnewer<CR><Esc>
 
+nn Y y$
+
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-command! Reload source %
+command! Reload source %;echo "current file was sourced"

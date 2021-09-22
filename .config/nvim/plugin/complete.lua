@@ -11,9 +11,9 @@ local on_attach = function (client, bufnr)
     buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
     if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "\\f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        buf_set_keymap("n", "\f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "\\f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        buf_set_keymap("n", "\f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     if client.resolved_capabilities.document_highlight then
@@ -38,6 +38,7 @@ require'lspconfig'.rust_analyzer.setup({on_attach = on_attach; capabilities = ca
 require'lspconfig'.ccls.setup({on_attach = on_attach; capabilities = capabilities;})
 require'lspconfig'.omnisharp.setup({on_attach = on_attach; capabilities = capabilities;})
 require'lspconfig'.vimls.setup({on_attach = on_attach; capabilities = capabilities;})
+require'lspconfig'.purescriptls.setup({on_attach = on_attach; capabilities = capabilities;})
 
 require'lspconfig'.jsonls.setup {
     commands = {

@@ -4,7 +4,6 @@ nn <silent> ,fg :Telescope live_grep<cr>
 nn <silent> ,fb :Telescope buffers<cr>
 nn <silent> ,fh :Telescope oldfiles<cr>
 nn <silent> ,fe :Telescope file_browser<cr>
-nn <silent> ,fp :Telescope project<CR>
 nn <silent> ,ft :Telescope<CR>
 nn <silent> ,fy :Telescope symbols<CR>
 
@@ -17,4 +16,3 @@ let g:indentLine_fileTypeExclude = ['dashboard']
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
-
