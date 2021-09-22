@@ -1,6 +1,7 @@
 set -U FZF_LEGACY_KEYBINDINGS 0
 set -x PATH "$HOME/.local/bin:$PATH"
 set -x PATH "$HOME/node_modules/.bin/:$PATH"
+set -x PATH ".lynxrc:$PATH"
 export FZF_DEFAULT_OPTS="
     --cycle --border -0
     --bind 'f1:execute(batcat {}),f2:execute(vim {})'
@@ -16,7 +17,7 @@ alias la='lsd -a '
 alias lg='lazygit '
 alias lla='lsd -la '
 alias lt='lsd --tree '
-alias makevim='sudo cd ~/.ghq/github.com/neovim/neovim && ghq list |ghq get --update --parallel && make -j8  && sudo make install && cd -'
+alias makevim='cd ~/.ghq/github.com/neovim/neovim && ghq list |ghq get --update --parallel && make -j8  && sudo make install && cd -'
 alias tx='tmux '
 alias vi='nvim '
 

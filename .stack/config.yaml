@@ -1,10 +1,10 @@
 templates:
-  author-name: Kasshi K
-  author-email: kasshi.4259.b.b@gmail.com
-  category: Your Projects Category
-  copyright: 'Copyright (c) 2021 kousei kashihara'
-  github-username: kasshiy
-  params: null
+  params:
+    author-name: Kasshi K
+    author-email: kasshi.4259.b.b@gmail.com
+    category: Your Projects Category
+    copyright: 'Copyright (c) 2021 chickbone'
+    github-username: chickbone
   scm-init: git
 
 system-ghc: true

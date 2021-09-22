@@ -4,17 +4,17 @@
 [alias]
 	st = status
 	co = commit
-	fadd = !fgadd
 	br = branch
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /home/kasshi_k/.gitignore_global
 	pager = "delta --dark --plus-color=\"#012800\" --minus-color=\"#340001\" --theme=\"DarkNeon\""
 [ghq]
-    root = ~/.ghq
+  root = ~/.ghq
+  user = "chickbone"
 [url "github:"]
-    InsteadOf = https://github.com/
-    InsteadOf = git@github.com:
+  InsteadOf = https://github.com/
+  InsteadOf = git@github.com:
 [fetch]
 	prune = true
 [init]
