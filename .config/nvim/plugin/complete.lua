@@ -1,34 +1,30 @@
-local on_attach = function (client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+vim.o.completeopt = "menu,menuone,noselect"
+local cmp = require'cmp'
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+cmp.setup({
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
 
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true, silent = true})
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    -- For vsnip user.
+    -- { name = 'vsnip' },
 
-    if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "\f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "\f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    end
+    -- For luasnip user.
+    -- { name = 'luasnip' },
 
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]], false)
-    end
+    -- For ultisnips user.
+    -- { name = 'ultisnips' },
 
-    require('completion').on_attach(client)
-end
-
+    { name = 'buffer' },
+  }
+})
+-- lspconfig
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 require'lspconfig'.pyright.setup({on_attach = on_attach; capabilities = capabilities;})

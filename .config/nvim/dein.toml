@@ -20,6 +20,8 @@ repo = 'glepnir/galaxyline.nvim'
 repo = 'kyazdani42/nvim-web-devicons'
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
+[[plugins]]
+repo = 'Xuyuanp/scrollbar.nvim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -29,6 +31,9 @@ repo = 'tpope/vim-repeat'
 repo = 'markonm/traces.vim'
 [[plugins]]
 repo = 'phaazon/hop.nvim'
+[[plugins]]
+repo = 'max397574/better-escape.nvim'
+hook_add = 'lua require("better_escape").setup()'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -38,6 +43,9 @@ repo = 'tpope/vim-unimpaired'
 repo = 'lewis6991/gitsigns.nvim'
 [[plugins]]
 repo = 'kdheepak/lazygit.nvim'
+[[plugins]]
+repo = 'pwntester/octo.nvim'
+hook_add = 'lua require"octo".setup()'
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -101,8 +109,7 @@ end
 [[plugins]]
 repo = 'kasshiy/nvim-lspconfig'
 [[plugins]]
-repo = 'nvim-lua/completion-nvim'
-hook_add = 'let g:completion_enable_auto_paren = 1'
+repo = 'hrsh7th/nvim-cmp' 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_post_update = "TSUpdate"
@@ -121,7 +128,11 @@ repo = 'nvim-lua/lsp-status.nvim'
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
 [[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
+[[plugins]]
 repo = 'onsails/lspkind-nvim'
+[[plugins]]
+repo = 'folke/trouble.nvim' 
 [[plugins]]
 repo = 'b3nj5m1n/kommentary'
 hook_add = '''
@@ -149,6 +160,8 @@ repo = 'vhdirk/vim-cmake'
 repo = 'skywind3000/asyncrun.vim'
 [[plugins]]
 repo = 'ronakg/quickr-preview.vim'
+[[plugins]]
+repo = 'kevinhwang91/nvim-bqf'
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'

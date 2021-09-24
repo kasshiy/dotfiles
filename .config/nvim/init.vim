@@ -16,10 +16,6 @@ call dein#begin('/home/kasshi_k/.cache/dein')
 
 call dein#end()
 
-let g:completion_enable_auto_popup = 1
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
-
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()

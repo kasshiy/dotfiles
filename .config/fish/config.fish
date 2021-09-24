@@ -3,8 +3,8 @@ set -x PATH "$HOME/.local/bin:$PATH"
 set -x PATH "$HOME/node_modules/.bin/:$PATH"
 set -x PATH ".lynxrc:$PATH"
 export FZF_DEFAULT_OPTS="
-    --cycle --border -0
-    --bind 'f1:execute(batcat {}),f2:execute(vim {})'
+    --cycle -0
+    --bind 'f1:execute(batt {}),f2:execute(vi {})'
     "
 export GHQ_SELECTOR="fzf-tmux"
 export GHQ_SELECTOR_OPTS="-p90%,70%"
