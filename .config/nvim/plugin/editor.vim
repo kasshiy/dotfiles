@@ -55,18 +55,22 @@ endif
 let loaded_matchit = 1
 let mapleader = " "
 
-nn <Esc><Esc> :nohlsearch<CR><Esc>
-nn <silent> [oq :copen<CR><Esc>
-nn <silent> ]oq :cclose<CR><Esc>
-nn <silent> [Q :colder<CR><Esc>
-nn <silent> ]Q :cnewer<CR><Esc>
+nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
+nn <silent> [oq <cmd>copen<CR><Esc>
+nn <silent> ]oq <cmd>cclose<CR><Esc>
+nn <silent> [Q <cmd>colder<CR><Esc>
+nn <silent> ]Q <cmd>cnewer<CR><Esc>
+
+"subsititure mappings
+nn ,s :%s///g<left><left>
+vn ,s :s///g<left><left>
 
 nn Y y$
 
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-command! Reload source %;echo "current file was sourced"
+command! Reload source %
 autocmd TermOpen * startinsert
 
 " smooth scroll
