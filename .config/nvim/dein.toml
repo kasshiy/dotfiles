@@ -24,6 +24,13 @@ repo = 'romgrk/barbar.nvim'
 repo = 'Xuyuanp/scrollbar.nvim'
 
 [[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+[[plugins]]
+repo = 'nvim-lua/popup.nvim'
+[[plugins]]
+repo = 'tami5/sql.nvim'
+
+[[plugins]]
 repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tpope/vim-repeat'
@@ -56,10 +63,6 @@ repo = 'junegunn/fzf.vim'
 repo = 'nvim-telescope/telescope-fzf-native.nvim'
 hook_post_update = "make"
 [[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-[[plugins]]
-repo = 'nvim-lua/popup.nvim'
-[[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
 [[plugins]]
 repo = 'nvim-telescope/telescope-frecency.nvim'
@@ -67,47 +70,19 @@ repo = 'nvim-telescope/telescope-frecency.nvim'
 repo = 'nvim-telescope/telescope-symbols.nvim'
 [[plugins]]
 repo = 'nvim-telescope/telescope-hop.nvim'
-hook_add = '''
-lua require'telescope'.load_extension'hop'
-'''
 [[plugins]]
 repo = 'nvim-telescope/telescope-github.nvim'
-hook_add = '''
-lua require'telescope'.load_extension'gh'
-'''
 [[plugins]]
 repo = 'nvim-telescope/telescope-ghq.nvim'
-hook_add = '''
-lua require'telescope'.load_extension'ghq'
-'''
-[[plugins]]
-repo = 'tami5/sql.nvim'
 [[plugins]]
 repo = 'glepnir/dashboard-nvim'
 
 [[plugins]]
 repo = 'andymass/vim-matchup'
 [[plugins]]
-repo = 'anott03/nvim-lspinstall'
-hook_add = '''
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-'''
+repo = 'kabouzeid/nvim-lspinstall'
 [[plugins]]
-repo = 'kasshiy/nvim-lspconfig'
+repo = 'anott03/nvim-lspconfig'
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp' 
 [[plugins]]
@@ -118,9 +93,7 @@ repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 [[plugins]]
 repo = 'nvim-treesitter/playground'
 [[plugins]]
-repo = 'nvim-treesitter/completion-treesitter'
-[[plugins]]
-repo = 'nvim-treesitter-refactor'
+repo = 'nvim-treesitter/nvim-treesitter-refactor'
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
 [[plugins]]
@@ -160,6 +133,12 @@ repo = 'vhdirk/vim-cmake'
 repo = 'skywind3000/asyncrun.vim'
 [[plugins]]
 repo = 'ronakg/quickr-preview.vim'
+[[plugins]]
+repo = 'mhinz/vim-grepper'
+hook_add = '''
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+'''
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
 

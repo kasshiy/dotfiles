@@ -16,3 +16,9 @@ let g:indentLine_fileTypeExclude = ['dashboard']
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
+
+lua << EOF
+require'telescope'.load_extension'ghq'
+require'telescope'.load_extension'hop'
+require'telescope'.load_extension'gh'
+EOF
