@@ -25,7 +25,6 @@ dependencies:
 - text
 - bytestring
 - transformers
-- lens
 
 library:
   source-dirs: src
