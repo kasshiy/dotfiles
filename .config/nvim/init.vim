@@ -21,6 +21,9 @@ if dein#check_install()
   call dein#install()
 endif
 
+let g:dein#auto_recache = v:true
+let g:dein#lazy_rplugins = v:true
+
 if !has('nvim')
   set ttymouse=xterm2
 endif
