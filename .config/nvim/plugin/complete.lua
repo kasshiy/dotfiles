@@ -1,5 +1,54 @@
-vim.o.completeopt = "menu,menuone,noselect"
 local cmp = require'cmp'
+-- local cnf = require'lspconfig'
+local lsp_installer = require'nvim-lsp-installer'
+local npairs = require('nvim-autopairs')
+
+-- lspconfig
+local on_attach = function(bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, 'n', ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('\\wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('\\wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('\\wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('\\D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('\\rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('\\ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('\\e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap(']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('\\q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('\\f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- lsp_installer
+lsp_installer.on_server_ready(function(server)
+    local opts = {on_attach = on_attach; capabilities = capabilities;}
+    -- (optional) Customize the options passed to the server
+    if server.name == "jsonls" then
+        opts.commands = {
+          Format = {
+            function()
+              vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+            end
+          }
+        }
+    end
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
 cmp.setup({
   mapping = {
@@ -8,109 +57,20 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
+  },
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+		keyword_length = 2,
   },
   sources = {
     { name = 'nvim_lsp' },
-
-    -- For vsnip user.
-    -- { name = 'vsnip' },
-
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-
     { name = 'buffer' },
+    { name = 'vsnip' },
+    { name = 'treesitter' },
+    { name = 'calc' },
   }
 })
--- lspconfig
-
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-require'lspconfig'.pyright.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.html.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.hls.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.rust_analyzer.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.ccls.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.omnisharp.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.vimls.setup({on_attach = on_attach; capabilities = capabilities;})
-require'lspconfig'.purescriptls.setup({on_attach = on_attach; capabilities = capabilities;})
-
-require'lspconfig'.jsonls.setup {
-    commands = {
-      Format = {
-        function()
-          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-        end
-      }
-    }
-}
-
--- lua lsp
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
-
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-require'lspconfig'.sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
-local remap = vim.api.nvim_set_keymap
-local npairs = require('nvim-autopairs')
 
 npairs.setup({
     check_ts = true,
@@ -124,25 +84,3 @@ npairs.setup({
 require('nvim-treesitter.configs').setup {
     autopairs = {enable = true}
 }
-
--- skip it, if you use another global object
-_G.MUtils= {}
-
-vim.g.completion_confirm_key = ""
-
-MUtils.completion_confirm=function()
-  if vim.fn.pumvisible() ~= 0  then
-    if vim.fn.complete_info()["selected"] ~= -1 then
-      require'completion'.confirmCompletion()
-      return npairs.esc("<c-y>")
-    else
-      vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
-      require'completion'.confirmCompletion()
-      return npairs.esc("<c-n><c-y>")
-    end
-  else
-    return npairs.autopairs_cr()
-  end
-end
-
-remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})

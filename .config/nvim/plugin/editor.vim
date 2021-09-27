@@ -34,9 +34,9 @@ else
 endif
 
 if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
   set undofile
   set undodir=~/.vim/undo
+  autocmd TermOpen * startinsert
 else
   set wildmenu
   set noundofile
@@ -71,7 +71,7 @@ nn Y y$
 vmap # y/<C-R>"<CR>
 
 command! Reload source %
-autocmd TermOpen * startinsert
+command! StripWhiteSpace %s/\s\+$//e
 
 " smooth scroll
 let s:stop_time = 10

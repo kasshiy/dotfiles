@@ -17,7 +17,7 @@ alias la='lsd -a '
 alias lg='lazygit '
 alias lla='lsd -la '
 alias lt='lsd --tree '
-alias makevim='cd ~/.ghq/github.com/neovim/neovim && ghq list |ghq get --update --parallel && make -j8  && sudo make install && cd -'
+alias makevim='cd ~/.ghq/github.com/neovim/neovim && ghq list |ghq get --update --parallel && sudo make -j8 && sudo make install && cd -'
 alias tx='tmux '
 alias vi='nvim '
 

@@ -39,6 +39,8 @@ repo = 'markonm/traces.vim'
 [[plugins]]
 repo = 'phaazon/hop.nvim'
 [[plugins]]
+repo = 'kevinhwang91/nvim-hlslens'
+[[plugins]]
 repo = 'max397574/better-escape.nvim'
 hook_add = 'lua require("better_escape").setup()'
 
@@ -80,11 +82,9 @@ repo = 'glepnir/dashboard-nvim'
 [[plugins]]
 repo = 'andymass/vim-matchup'
 [[plugins]]
-repo = 'kabouzeid/nvim-lspinstall'
+repo = 'williamboman/nvim-lsp-installer'
 [[plugins]]
-repo = 'anott03/nvim-lspconfig'
-[[plugins]]
-repo = 'hrsh7th/nvim-cmp' 
+repo = 'neovim/nvim-lspconfig'
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_post_update = "TSUpdate"
@@ -112,6 +112,21 @@ hook_add = '''
 lua require('kommentary.config').use_extended_mappings()
 '''
 
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp' 
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+[[plugins]]
+repo = 'ray-x/cmp-treesitter' 
+[[plugins]]
+repo = 'rsh7th/cmp-calc' 
+[[plugins]]
+repo = 'hrsh7th/cmp-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
 [[plugins]]
 repo = 'neovimhaskell/haskell-vim'
 [[plugins]]

@@ -22,22 +22,9 @@ if dein#check_install()
 endif
 
 let g:dein#auto_recache = v:true
-let g:dein#lazy_rplugins = v:true
+" let g:dein#lazy_rplugins = v:true
 
-if !has('nvim')
-  set ttymouse=xterm2
-endif
+set ttymouse=xterm2
 set pumblend=10
-
-function! s:auto_update_colorscheme(...) abort
-    if &ft !=# 'vim'
-        echoerr 'Execute this command in colorscheme file buffer'
-    endif
-    setlocal autoread noswapfile
-    let interval = a:0 > 0 ? a:1 : 3000
-    let timer = timer_start(interval, {-> execute('checktime')}, {'repeat' : -1})
-    autocmd! BufReadPost <buffer> source ~/.config/nvim/colors/cinon.vim
-endfunction
-command! -nargs=? AutoUpdateColorscheme call <SID>auto_update_colorscheme(<f-args>)
 
 set guicursor=
