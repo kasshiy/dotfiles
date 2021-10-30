@@ -51,22 +51,19 @@ vim.g.bufferline = {
   insert_at_end = false,
 
   maximum_padding = 1,
-
   maximum_length = 30,
-
   semantic_letters = true,
 
   letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
-
   no_name_title = nil,
 }
+
 -------- Galaxy line ------
 local gl = require('galaxyline')
 local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
 
 local colors = require('nightfox.colors').load('nordfox')
-
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
     return true
@@ -83,9 +80,10 @@ gls.left[1] = {
 gls.left[2] = {
   ViMode = {
     provider = function()
-      local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', ['<C-v>'] = 'VISUAL BLOCK'}
+      local alias = {n = ' NORMAL',i = ' INSERT',c= ' COMMAND',v= ' VISUAL',V= ' VISUAL LINE', ['<C-v>'] = ' VISUAL BLOCK'}
       return alias[vim.fn.mode()]
     end,
+    separator = '',
     separator_highlight = {colors.purple,function()
       if not buffer_not_empty() then
         return colors.purple
@@ -106,6 +104,7 @@ gls.left[4] = {
   FileName = {
     provider = {'FileName','FileSize'},
     condition = buffer_not_empty,
+    separator = '',
     separator_highlight = {colors.purple,colors.darkblue},
     highlight = {colors.glay,colors.darkblue}
   }
@@ -160,7 +159,8 @@ gls.left[9] = {
 }
 gls.left[10] = {
   LeftEnd = {
-    provider = function() return '|' end,
+    provider = function() return '' end,
+    separator = '',
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.purple,colors.purple}
   }
@@ -187,6 +187,7 @@ gls.left[13] = {
 gls.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
+    separator = '',
     separator_highlight = {colors.bg,colors.purple},
     highlight = {colors.grey,colors.purple},
   }
@@ -202,6 +203,7 @@ gls.right[2] = {
 gls.right[3] = {
   PerCent = {
     provider = 'LinePercent',
+    separator = '',
     separator_highlight = {colors.darkblue,colors.purple},
     highlight = {colors.grey,colors.darkblue},
   }
@@ -216,6 +218,7 @@ gls.right[4] = {
 gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
+    separator = '',
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.grey,colors.purple}
   }
@@ -225,6 +228,7 @@ gls.short_line_left[1] = {
 gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
+    separator = '',
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.grey,colors.purple}
   }

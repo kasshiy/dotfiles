@@ -24,7 +24,9 @@ endif
 let g:dein#auto_recache = v:true
 " let g:dein#lazy_rplugins = v:true
 
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 set pumblend=10
 
 set guicursor=

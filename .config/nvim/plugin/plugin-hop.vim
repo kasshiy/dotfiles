@@ -2,9 +2,6 @@ lua << EOF
   require'hop'.setup()
 EOF
 
-nmap  / <cmd>HopPattern<CR>
-xmap  / <cmd>HopPattern<CR>
-
 nmap <leader>f <cmd>HopChar1AC<CR>
 nmap <leader>t <cmd>HopChar1BC<CR>
 nmap <leader>s <cmd>HopChar1<CR>

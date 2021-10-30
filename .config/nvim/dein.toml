@@ -20,6 +20,7 @@ repo = 'glepnir/galaxyline.nvim'
 repo = 'kyazdani42/nvim-web-devicons'
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
+hook_add = 'au * hi BufferLineFill guibg=NONE'
 [[plugins]]
 repo = 'Xuyuanp/scrollbar.nvim'
 
@@ -50,6 +51,8 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-unimpaired'
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
+[[plugins]]
+repo = 'f-person/git-blame.nvim'
 [[plugins]]
 repo = 'kdheepak/lazygit.nvim'
 [[plugins]]
