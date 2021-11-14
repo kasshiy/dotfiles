@@ -63,7 +63,7 @@ lua << EOF
   nightfox.load()
 
 EOF
-  colorscheme nightfox
+  colorscheme eva01-LCL
 else
   colorscheme eva01-LCL
 endif

@@ -17,9 +17,9 @@ call dein#begin('/home/kasshi_k/.cache/dein')
 call dein#end()
 
 " If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+"if dein#check_install()
+"  call dein#install()
+"endif
 
 let g:dein#auto_recache = v:true
 " let g:dein#lazy_rplugins = v:true

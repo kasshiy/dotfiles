@@ -20,7 +20,6 @@ repo = 'glepnir/galaxyline.nvim'
 repo = 'kyazdani42/nvim-web-devicons'
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
-hook_add = 'au * hi BufferLineFill guibg=NONE'
 [[plugins]]
 repo = 'Xuyuanp/scrollbar.nvim'
 
