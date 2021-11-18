@@ -99,8 +99,6 @@ repo = 'nvim-treesitter/nvim-treesitter-refactor'
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
 [[plugins]]
-repo = 'nvim-lua/lsp-status.nvim'
-[[plugins]]
 repo = 'glepnir/lspsaga.nvim'
 [[plugins]]
 repo = 'ray-x/lsp_signature.nvim'
@@ -158,6 +156,11 @@ xmap gs <plug>(GrepperOperator)
 '''
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+<<<<<<< Updated upstream
+=======
+[[plugins]]
+repo = 'stevearc/qf_helper.nvim'
+>>>>>>> Stashed changes
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
