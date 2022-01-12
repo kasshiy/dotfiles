@@ -15,8 +15,6 @@ repo = 'EdenEast/nightfox.nvim'
 repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
 
 [[plugins]]
-repo = 'glepnir/galaxyline.nvim'
-[[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
@@ -156,11 +154,8 @@ xmap gs <plug>(GrepperOperator)
 '''
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
-<<<<<<< Updated upstream
-=======
 [[plugins]]
 repo = 'stevearc/qf_helper.nvim'
->>>>>>> Stashed changes
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'

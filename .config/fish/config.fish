@@ -2,7 +2,8 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 set -x PATH "$HOME/.local/bin:$PATH"
 set -x PATH "$HOME/node_modules/.bin/:$PATH"
 set -x PATH ".lynxrc:$PATH"
-export FZF_DEFAULT_OPTS="
+set -x PATH "$HOME/.cargo/bin:$PATH"
+set -x FZF_DEFAULT_OPTS "
     --cycle -0
     --bind 'f1:execute(batt {}),f2:execute(vi {})'
     "

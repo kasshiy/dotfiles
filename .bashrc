@@ -131,6 +131,7 @@ source $HOME/.keychain/$HOSTNAME-sh
 #end
 
 nix-env -u&
+echo "Login successed"
 echo "Enter any key....."
 read
 
