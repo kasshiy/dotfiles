@@ -29,57 +29,6 @@ repo = 'nvim-lua/popup.nvim'
 repo = 'tami5/sql.nvim'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
-[[plugins]]
-repo = 'tpope/vim-repeat'
-[[plugins]]
-repo = 'markonm/traces.vim'
-[[plugins]]
-repo = 'phaazon/hop.nvim'
-[[plugins]]
-repo = 'kevinhwang91/nvim-hlslens'
-[[plugins]]
-repo = 'max397574/better-escape.nvim'
-hook_add = 'lua require("better_escape").setup()'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-[[plugins]]
-repo = 'tpope/vim-unimpaired'
-[[plugins]]
-repo = 'lewis6991/gitsigns.nvim'
-[[plugins]]
-repo = 'f-person/git-blame.nvim'
-[[plugins]]
-repo = 'kdheepak/lazygit.nvim'
-[[plugins]]
-repo = 'pwntester/octo.nvim'
-hook_add = 'lua require"octo".setup()'
-
-[[plugins]]
-repo = 'junegunn/fzf'
-hook_post_update = "call fzf#install()"
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-[[plugins]]
-repo = 'nvim-telescope/telescope-fzf-native.nvim'
-hook_post_update = "make"
-[[plugins]]
-repo = 'nvim-telescope/telescope.nvim'
-[[plugins]]
-repo = 'nvim-telescope/telescope-frecency.nvim'
-[[plugins]]
-repo = 'nvim-telescope/telescope-symbols.nvim'
-[[plugins]]
-repo = 'nvim-telescope/telescope-hop.nvim'
-[[plugins]]
-repo = 'nvim-telescope/telescope-github.nvim'
-[[plugins]]
-repo = 'nvim-telescope/telescope-ghq.nvim'
-[[plugins]]
-repo = 'glepnir/dashboard-nvim'
-
-[[plugins]]
 repo = 'andymass/vim-matchup'
 [[plugins]]
 repo = 'williamboman/nvim-lsp-installer'
@@ -110,6 +59,7 @@ hook_add = '''
 lua require('kommentary.config').use_extended_mappings()
 '''
 
+
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp' 
 [[plugins]]
@@ -122,57 +72,3 @@ repo = 'ray-x/cmp-treesitter'
 repo = 'rsh7th/cmp-calc' 
 [[plugins]]
 repo = 'hrsh7th/cmp-vsnip'
-
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip'
-[[plugins]]
-repo = 'neovimhaskell/haskell-vim'
-[[plugins]]
-repo = 'purescript-contrib/purescript-vim' 
-[[plugins]]
-repo = 'rust-lang/rust.vim'
-hook_add = 'let g:rustfmt_autosave = 1'
-[[plugins]]
-repo = 'simrat39/rust-tools.nvim' 
-[[plugins]]
-repo = 'iamcco/markdown-preview.nvim'
-hook_post_update = 'call mkdp#util#install()'
-[[plugins]]
-repo = 'honza/vim-snippets'
-
-[[plugins]]
-repo = 'vhdirk/vim-cmake'
-[[plugins]]
-repo = 'skywind3000/asyncrun.vim'
-[[plugins]]
-repo = 'ronakg/quickr-preview.vim'
-[[plugins]]
-repo = 'mhinz/vim-grepper'
-hook_add = '''
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
-'''
-[[plugins]]
-repo = 'kevinhwang91/nvim-bqf'
-[[plugins]]
-repo = 'stevearc/qf_helper.nvim'
-
-[[plugins]]
-repo = 'lambdalisue/fern.vim'
-[[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
-[[plugins]]
-repo = 'lambdalisue/glyph-palette.vim'
-[[plugins]]
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-
-[[plugins]]
-repo = 'vim-jp/vimdoc-ja'
-
-[[plugins]]
-repo = 'junegunn/goyo.vim'
-[[plugins]]
-repo = 'junegunn/limelight.vim'
-
-[[plugins]]
-repo = 'deris/vim-duzzle'
