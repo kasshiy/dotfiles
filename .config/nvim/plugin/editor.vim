@@ -21,6 +21,7 @@ set virtualedit=onemore
 set showmatch
 set signcolumn=yes
 
+silent! nohlsearch
 set is
 set ignorecase
 set tagcase=followscs
@@ -54,6 +55,9 @@ endif
 
 let loaded_matchit = 1
 let mapleader = " "
+
+nmap j gj
+nmap k gk
 
 nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
 nn <silent> [oq <cmd>copen<CR><Esc>
