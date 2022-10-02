@@ -131,7 +131,7 @@ source $HOME/.keychain/$HOSTNAME-sh
 #end
 
 nix-env -u&
-echo "Login successed"
+echo "Login successfully"
 echo "Enter any key....."
 read
 
@@ -146,4 +146,4 @@ fi
 #myfunctions
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
+"$HOME/.cargo/env"
