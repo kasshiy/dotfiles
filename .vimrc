@@ -3,6 +3,8 @@ call jetpack#begin()
 
 Jetpack 'tani/vim-jetpack', {'opt': 1}
 
+Jetpack 'chickbone/eva01.vim'
+
 Jetpack 'junegunn/goyo.vim'
 Jetpack 'vim-jp/vimdoc-ja'
 

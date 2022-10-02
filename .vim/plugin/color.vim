@@ -1,0 +1,1 @@
+/home/kasshi_k/dotfiles/.config/nvim/plugin/color.vim
