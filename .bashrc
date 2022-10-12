@@ -130,7 +130,6 @@ source $HOME/.keychain/$HOSTNAME-sh
 
 #end
 
-nix-env -u&
 echo "Login successfully"
 echo "Enter any key....."
 read
@@ -138,8 +137,6 @@ read
 tmux_count=$(ps -ef | grep '[t]mux' | wc -l)
 if [[ $SHLVL = 1 && $tmux_count = 0 ]]; then
     tmux new-session
-elif [[ $SHLVL = 1 && $tmux_count = 1 ]]; then
-    tmux a
 else
     tmux a
 fi

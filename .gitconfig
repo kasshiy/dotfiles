@@ -6,7 +6,7 @@
 	co = commit
 	br = branch
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = /home/kasshi_k/.gitignore_global
 	pager = "delta --dark --plus-color=\"#012800\" --minus-color=\"#340001\" --theme=\"DarkNeon\""
 [ghq]
@@ -22,4 +22,4 @@
 [pull]
 	rebase = false
 [merge]
-	tool = nvimdiff
+	tool = vimdiff

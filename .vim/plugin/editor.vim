@@ -76,6 +76,7 @@ vmap # y/<C-R>"<CR>
 
 command! Reload source %
 command! StripWhiteSpace %s/\s\+$//e
+command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)/2, minheight: &lines/2 })
 
 " smooth scroll
 let s:stop_time = 10

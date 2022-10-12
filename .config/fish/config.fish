@@ -7,6 +7,7 @@ set -x FZF_DEFAULT_OPTS "
     --cycle -0
     --bind 'f1:execute(batt {}),f2:execute(vi {})'
     "
+export EDITOR="vim"
 export GHQ_SELECTOR="fzf-tmux"
 export GHQ_SELECTOR_OPTS="-p90%,70%"
 #export TERM="tmux-256color"
@@ -47,8 +48,6 @@ fzf_key_bindings
 # ghcup-env
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 test -f /home/kasshi_k/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /home/kasshi_k/.ghcup/bin $PATH
-# nix start
-bass . ~/.nix-profile/etc/profile.d/nix.sh
 fnm completions --shell fish | source
 fnm env | source
 starship init fish | source
