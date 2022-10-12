@@ -32,10 +32,12 @@ Jetpack 'junegunn/fzf.vim'
 
 Jetpack 'tpope/vim-surround'
 Jetpack 'tpope/vim-repeat'
-Jetpack 'tpope/vim-fugitive'
 Jetpack 'tpope/vim-unimpaired'
 Jetpack 'unblevable/quick-scope'
 Jetpack 'cohama/lexima.vim'
+
+Jetpack 'tpope/vim-fugitive'
+Jetpack 'airblade/vim-gitgutter'
 
 Jetpack 'skywind3000/asyncrun.vim'
 Jetpack 'romainl/vim-qf'
