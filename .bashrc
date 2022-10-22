@@ -138,7 +138,7 @@ tmux_count=$(ps -ef | grep '[t]mux' | wc -l)
 if [[ $SHLVL = 1 && $tmux_count = 0 ]]; then
     tmux new-session
 else
-    tmux a
+    tmux a -t home
 fi
 #myfunctions
 

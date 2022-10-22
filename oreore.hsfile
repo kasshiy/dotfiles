@@ -1,7 +1,7 @@
 {-# START_FILE package.yaml #-}
 name:                {{name}}
 version:             0.1.0.0
-github:              "kasshiy/{{name}}"
+github:              "chickbone/{{name}}"
 license:             BSD3
 author:              "Kasshi K"
 maintainer:          "kasshi.4259.b.b@gmail.com"
