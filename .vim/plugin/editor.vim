@@ -36,11 +36,11 @@ endif
 
 if has('nvim')
   set undofile
-  set undodir=~/.vim/undo
   autocmd TermOpen * startinsert
 else
   set wildmenu
-  set noundofile
+  set undofile
+  set undodir=~/.vim/undo
   set history=10000
   set hls
   set ic
@@ -56,6 +56,9 @@ endif
 let loaded_matchit = 1
 let mapleader = " "
 
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
 nmap j gj
 nmap k gk
 
@@ -68,7 +71,6 @@ nn <silent> ]Q <cmd>cnewer<CR><Esc>
 "subsititure mappings
 nn ,s :%s///g<left><left>
 vn ,s :s///g<left><left>
-
 nn Y y$
 
 "search in visualmode
@@ -76,7 +78,7 @@ vmap # y/<C-R>"<CR>
 
 command! Reload source %
 command! StripWhiteSpace %s/\s\+$//e
-command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)/2, minheight: &lines/2 })
+command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)*4/5, minheight: &lines*4/5 })
 
 function! s:init_help() abort
   wincmd H

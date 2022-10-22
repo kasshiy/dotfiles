@@ -22,7 +22,6 @@ Jetpack 'yuki-yano/fern-preview.vim'
 
 Jetpack 'hrsh7th/vim-vsnip'
 Jetpack 'neovimhaskell/haskell-vim'
-Jetpack 'utubo/vim-registers-lite'
 Jetpack 'rust-lang/rust.vim', { 'do': 'let g:rustfmt_autosave = 1' }
 
 Jetpack 'neoclide/coc.nvim', {'branch': 'release'}
@@ -35,6 +34,8 @@ Jetpack 'tpope/vim-repeat'
 Jetpack 'tpope/vim-unimpaired'
 Jetpack 'unblevable/quick-scope'
 Jetpack 'cohama/lexima.vim'
+Jetpack 'utubo/vim-registers-lite'
+Jetpack 'markonm/traces.vim'
 
 Jetpack 'tpope/vim-fugitive'
 Jetpack 'airblade/vim-gitgutter'
