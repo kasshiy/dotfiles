@@ -51,4 +51,4 @@ test -f /home/kasshi_k/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /home/kass
 fnm completions --shell fish | source
 fnm env | source
 starship init fish | source
-starship completions | source
+starship completions fish | source

@@ -39,6 +39,7 @@ if has('nvim')
   autocmd TermOpen * startinsert
 else
   set wildmenu
+  set wildoptions=pum
   set undofile
   set undodir=~/.vim/undo
   set history=10000
@@ -65,12 +66,13 @@ nmap k gk
 nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
 nn <silent> [oq <cmd>copen<CR><Esc>
 nn <silent> ]oq <cmd>cclose<CR><Esc>
-nn <silent> [Q <cmd>colder<CR><Esc>
-nn <silent> ]Q <cmd>cnewer<CR><Esc>
+silent! nn [Q <cmd>colder<CR><Esc>
+silent! nn ]Q <cmd>cnewer<CR><Esc>
 
 "subsititure mappings
 nn ,s :%s///g<left><left>
 vn ,s :s///g<left><left>
+cnoremap <expr> s getcmdtype() == ':' && getcmdline() == 's' ? '<BS>%s/' : 's'
 nn Y y$
 
 "search in visualmode
@@ -79,9 +81,3 @@ vmap # y/<C-R>"<CR>
 command! Reload source %
 command! StripWhiteSpace %s/\s\+$//e
 command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)*4/5, minheight: &lines*4/5 })
-
-function! s:init_help() abort
-  wincmd H
-  vertical resize 81
-endfunction
-autocmd FileType help call s:init_help()
