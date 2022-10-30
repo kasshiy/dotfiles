@@ -1,5 +1,5 @@
 set nobackup
-Jetpack noswapfile
+set noswapfile
 
 set hidden
 set mouse=a
