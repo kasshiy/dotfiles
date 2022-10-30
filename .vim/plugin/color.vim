@@ -1,46 +1,57 @@
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" wave line
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
 
 set background=dark
 
-au ColorScheme * hi Comment cterm=italic gui=italic
-au ColorScheme * hi Normal ctermbg=NONE guibg=NONE
-au ColorScheme * hi NormalNC ctermbg=NONE guibg=NONE
-au ColorScheme * hi NonText ctermbg=NONE guibg=NONE
-au ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
-au ColorScheme * hi CursorLineNr ctermbg=NONE cterm=bold guibg=NONE guifg=#E07307 gui=bold
-au ColorScheme * hi Folded ctermbg=NONE guibg=NONE
-au ColorScheme * hi EndOfBuffer ctermbg=NONE guibg=NONE guifg=#765300
-au ColorScheme * hi SignColumn ctermbg=NONE guibg=NONE
-au ColorScheme * hi CursorLine ctermbg=NONE guibg=NONE
-au ColorScheme * hi VertSplit ctermbg=NONE guibg=NONE
+function! Default_color()
+  hi Comment cterm=italic gui=italic
+  hi Normal ctermbg=NONE guibg=NONE
+  hi NormalNC ctermbg=NONE guibg=NONE
+  hi NonText ctermbg=NONE guibg=NONE
+  hi LineNr ctermbg=NONE guibg=NONE
+  hi CursorLineNr ctermbg=NONE cterm=bold guibg=NONE guifg=#E07307 gui=bold
+  hi Folded ctermbg=NONE guibg=NONE
+  hi EndOfBuffer ctermbg=NONE guibg=NONE guifg=#765300
+  hi SignColumn ctermbg=NONE guibg=NONE
+  hi CursorLine ctermbg=NONE guibg=NONE
+  hi VertSplit ctermbg=NONE guibg=NONE
 
-""""""""""""""""""""
-"     haskell      "
-""""""""""""""""""""
-augroup hs_color
+  hi link haskellTSConstMacro SpecialComment
+  hi link haskellTSConstructor Type
+  hi link haskellTSKeyword Statement
+  hi haskellTSKeyword gui=italic
+  hi link haskellTSType Identifier
+  hi link haskellTSFunction Normal
+  hi link TSPunctBracket Normal
+  hi link haskellTSNamespace Number
+  hi link haskellTSCharacter String
+
+  hi link haskellWhere Include
+  hi link haskellDeriveKeyword Include
+  hi link haskellDecl Statement
+  hi link haskellDeclKeyword haskellDecl
+  hi link haskellKeyword Keyword
+
+  hi link haskellNumber Normal
+  hi link haskellDelimiter Normal
+  hi link haskellPragma SpecialComment
+endfunction
+
+function! Eva_color()
+  hi haskellKeyword guifg=#C993FF
+endfunction
+
+call Default_color()
+call Eva_color()
+
+augroup mycolor
   au!
-  au ColorScheme * hi link haskellTSConstMacro SpecialComment
-  au ColorScheme * hi link haskellTSConstructor Type
-  au ColorScheme * hi link haskellTSKeyword Statement
-  au ColorScheme * hi haskellTSKeyword gui=italic
-  au ColorScheme * hi link haskellTSType Identifier
-  au ColorScheme * hi link haskellTSFunction Normal
-  au ColorScheme * hi link TSPunctBracket Normal
-  au ColorScheme * hi link haskellTSNamespace Number
-  au ColorScheme * hi link haskellTSCharacter String
-
-  au ColorScheme * hi link haskellWhere Include
-  au ColorScheme * hi link haskellDeriveKeyword Include
-  au ColorScheme * hi link haskellDecl Statement
-  au ColorScheme * hi link haskellDeclKeyword haskellDecl
-  au ColorScheme * hi link haskellKeyword Keyword
-  au ColorScheme eva01-LCL hi haskellKeyword guifg=#C993FF
-
-  au ColorScheme * hi link haskellNumber Normal
-  au ColorScheme * hi link haskellDelimiter Normal
-  au ColorScheme * hi link haskellPragma SpecialComment
+  au ColorScheme * call Default_color()
+  au ColorScheme eva01-LCL call Eva_color()
 augroup END
 
 colorscheme eva01-LCL

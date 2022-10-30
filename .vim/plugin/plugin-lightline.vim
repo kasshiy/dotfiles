@@ -2,14 +2,12 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'mode_map': {'c': 'NORMAL'},
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+    \   'left': [ [ 'mode', 'paste' ], [ 'filename' ] ]
     \ },
     \ 'component_function': {
     \   'modified': 'LightlineModified',
     \   'readonly': 'LightlineReadonly',
-    \   'fugitive': 'LightlineFugitive',
     \   'filename': 'LightlineFilename',
-    \   'fileformat': 'LightlineFileformat',
     \   'filetype': 'LightlineFiletype',
     \   'fileencoding': 'LightlineFileencoding',
     \   'mode': 'LightlineMode'
@@ -33,18 +31,6 @@ function! LightlineFilename()
         \  &ft == 'vimshell' ? vimshell#get_status_string() :
         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
-  else
-    return ''
-  endif
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! LightlineFiletype()

@@ -1,5 +1,5 @@
 set nobackup
-set noswapfile
+Jetpack noswapfile
 
 set hidden
 set mouse=a
@@ -12,13 +12,9 @@ set smartindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set matchtime=2
-set matchpairs+=":",':'
 
 set number
 set virtualedit=onemore
-
-set showmatch
 set signcolumn=yes
 
 silent! nohlsearch
@@ -35,7 +31,6 @@ else
 endif
 
 if has('nvim')
-  set undofile
   autocmd TermOpen * startinsert
 else
   set wildmenu
@@ -57,17 +52,10 @@ endif
 let loaded_matchit = 1
 let mapleader = " "
 
-let &t_Cs = "\e[4:3m"
-let &t_Ce = "\e[4:0m"
-
 nmap j gj
 nmap k gk
 
-nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
-nn <silent> [oq <cmd>copen<CR><Esc>
-nn <silent> ]oq <cmd>cclose<CR><Esc>
-silent! nn [Q <cmd>colder<CR><Esc>
-silent! nn ]Q <cmd>cnewer<CR><Esc>
+nn <Esc><Esc> <cmd>nohlsearch<CR><cmd>QfhlClearall<Esc>
 
 "subsititure mappings
 nn ,s :%s///g<left><left>
@@ -81,3 +69,5 @@ vmap # y/<C-R>"<CR>
 command! Reload source %
 command! StripWhiteSpace %s/\s\+$//e
 command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)*4/5, minheight: &lines*4/5 })
+
+au BufWritePost $MYVIMRC source $MYVIMRC

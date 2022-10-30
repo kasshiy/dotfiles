@@ -13,6 +13,11 @@ b:qfpreview = {
     height: 20
 }
 
+nn <buffer> H <Plug>(qf_older)
+nn <buffer> L <Plug>(qf_newer)
+nn <buffer> { <Plug>(qf_previous_file)
+nn <buffer> } <Plug>(qf_next_file)
+
 # loop scroll
 noremap <silent> <buffer> <expr> j <SID>Jk(1)
 noremap <silent> <buffer> <expr> k <SID>Jk(-1)
