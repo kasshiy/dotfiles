@@ -26,6 +26,8 @@ Jetpack 'itchyny/lightline.vim'
 
 Jetpack 'ryanoasis/vim-devicons'
 Jetpack 'lambdalisue/glyph-palette.vim'
+Jetpack 'lambdalisue/nerdfont.vim'
+
 Jetpack 'lambdalisue/fern.vim'
 Jetpack 'lambdalisue/fern-renderer-nerdfont.vim'
 Jetpack 'lambdalisue/fern-git-status.vim'
