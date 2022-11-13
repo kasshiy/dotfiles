@@ -1,3 +1,8 @@
+if exists("b:did_ftplugin")
+  finish
+endif
+b:did_ftplugin = 1
+
 wincmd H
 vertical resize 81
 

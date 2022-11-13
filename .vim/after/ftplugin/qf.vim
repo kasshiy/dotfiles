@@ -1,5 +1,10 @@
 vim9script
 
+if exists("b:did_ftplugin")
+  finish
+endif
+b:did_ftplugin = 1
+
 noremap <buffer> p <plug>(qf-preview-open)
 b:qfpreview = {
     halfpagedown: 'd',
