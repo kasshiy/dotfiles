@@ -12,5 +12,5 @@ let g:expand_region_text_objects = {
       \ 'iB' : 1,
       \ 'il' : 0,
       \ 'ip' : 1,
-      \ 'ie' : 0,
+      \ 'ie' : 1,
       \ }

@@ -70,31 +70,47 @@ inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 #enddef
 
 # skkeleton
-skkeleton#config({ 'globalJisyo': '~/.skk/SKK-JISYO.L' })
 ddc#custom#patch_global('sourceOptions', {
   'skkeleton': {
     'mark': 'skk',
     'matchers': ['skkeleton'],
     'sorters': [],
     'minAutoCompleteLength': 2,
-    'isVolatile': v:true,
+    'isVolatile': true,
   },
 })
-skkeleton#config({'completionRankFile': '~/.skkeleton/rank.json'})
 
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
+def Skkeleton_init()
+  skkeleton#config({
+     'eggLikeNewline': true,
+     'keepState': true,
+     'globalDictionaries': [["~/.skk/SKK-JISYO.L", "euc-jp"]],
+     'completionRankFile': '~/.skkeleton/rank.json',
+   })
+  skkeleton#register_kanatable('rom', {
+     'jj': 'escape',
+     "z\<Space>": ["\u3000", ''],
+   })
+enddef
 
-autocmd User skkeleton-enable-pre Skkeleton_pre()
+imap <silent> <C-j> <Plug>(skkeleton-toggle)
+cmap <silent> <C-j> <Plug>(skkeleton-toggle)
+
 def Skkeleton_pre()
   # Overwrite sources
   var prev_buffer_config = ddc#custom#get_buffer()
   ddc#custom#patch_buffer('sources', ['skkeleton'])
 enddef
-autocmd User skkeleton-disable-pre Skkeleton_post()
 def Skkeleton_post()
   # Restore sources
   ddc#custom#set_buffer(prev_buffer_config)
 enddef
+
+augroup skkeleton-config
+  autocmd!
+  autocmd User skkeleton-initialize-pre Skkeleton_init()
+  autocmd User skkeleton-enable-pre Skkeleton_pre()
+  autocmd User skkeleton-disable-pre Skkeleton_post()
+augroup END
 
 ddc#enable()

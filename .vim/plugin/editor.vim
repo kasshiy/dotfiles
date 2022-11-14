@@ -9,6 +9,7 @@ set lz
 set bri
 set expandtab
 set smartindent
+set backspace=indent,eol,start
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -23,6 +24,9 @@ set ignorecase
 set tagcase=followscs
 set clipboard=unnamed
 set completeopt=menuone,noinsert,noselect
+set previewpopup=height:10,width:60
+
+set helplang=ja,en
 
 if exists('g:started_by_firenvim')
   set laststatus=0
@@ -41,7 +45,6 @@ else
   set hls
   set ic
   set listchars=precedes:^
-  set encoding=utf-8
   set autoread
   set belloff=all
   set ttimeoutlen=50
@@ -49,11 +52,24 @@ else
 endif
 "--------- mapings ---------
 
-let loaded_matchit = 1
-let mapleader = " "
+noremap <Leader>      <Nop>
+noremap <LocalLeader> <Nop>
+let g:mapleader = "\<Space>"
+let g:maplocalleader = '\'
 
 nmap j gj
 nmap k gk
+
+nn <S-Left>  <C-w><<CR>
+nn <S-Right> <C-w>><CR>
+nn <S-Up>    <C-w>-<CR>
+nn <S-Down>  <C-w>+<CR>
+nn <Tab> <C-w>w
+
+if executable('rg')
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
 
 nn <Esc><Esc> <cmd>nohlsearch<CR><cmd>QfhlClearall<Esc>
 
@@ -61,13 +77,11 @@ nn <Esc><Esc> <cmd>nohlsearch<CR><cmd>QfhlClearall<Esc>
 nn ,s :%s///g<left><left>
 vn ,s :s///g<left><left>
 cnoremap <expr> s getcmdtype() == ':' && getcmdline() == 's' ? '<BS>%s/' : 's'
-nn Y y$
 
+nn Y y$
 "search in visualmode
 vmap # y/<C-R>"<CR>
 
-command! Reload source %
+cabbrev rr source %
 command! StripWhiteSpace %s/\s\+$//e
 command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)*4/5, minheight: &lines*4/5 })
-
-au BufWritePost $MYVIMRC source $MYVIMRC
