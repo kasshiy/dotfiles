@@ -50,6 +50,7 @@ else
   set ttimeoutlen=50
   set showcmd
 endif
+
 "--------- mapings ---------
 
 noremap <Leader>      <Nop>
@@ -83,5 +84,5 @@ nn Y y$
 vmap # y/<C-R>"<CR>
 
 cabbrev rr source %
-command! StripWhiteSpace %s/\s\+$//e
+command! StripWhiteSpace keeppatterns %s/\s\+$//e
 command! Term call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)*4/5, minheight: &lines*4/5 })

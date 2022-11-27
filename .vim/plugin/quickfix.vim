@@ -1,5 +1,5 @@
 let g:qfhl_startup = 'enable'
-let g:qf_auto_resize = 0
+"let g:qf_auto_resize = 0
 
 nn [q <Plug>(qf_qf_previous)
 nn ]q <Plug>(qf_qf_next)
@@ -14,5 +14,5 @@ nn Q <Plug>(qf_qf_switch)
 let g:grepper = {}
 let g:grepper.prompt_mapping_tool = '<leader>g'
 
-nnoremap <leader>gs :Grepper -tool rg<CR>
-nnoremap <leader>*  :Grepper -tool rg -cword<CR>
+nn <leader>gs :Grepper -tool rg<CR>
+nn <leader>*  :Grepper -tool rg -cword<CR>

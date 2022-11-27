@@ -45,9 +45,6 @@ function! Eva_color()
   hi haskellKeyword guifg=#C993FF
 endfunction
 
-call Default_color()
-call Eva_color()
-
 augroup mycolor
   au!
   au ColorScheme * call Default_color()

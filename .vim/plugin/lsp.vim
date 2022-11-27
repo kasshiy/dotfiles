@@ -5,7 +5,7 @@ let g:lsp_diagnostics_signs_hint = {'text': '💡'}
 let g:lsp_document_code_action_signs_hint = {'text': '💡'}
 
 let g:lsp_preview_float = 1
-let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_cursor = 0
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_format_sync_timeout = 1000
 let g:lsp_documentation_float_docked = 1

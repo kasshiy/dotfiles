@@ -1,11 +1,6 @@
 vim9script
 
-if exists("b:did_ftplugin")
-  finish
-endif
-b:did_ftplugin = 1
-
-noremap <buffer> p <plug>(qf-preview-open)
+nmap <buffer> p <Plug>(qf-preview-open)
 b:qfpreview = {
     halfpagedown: 'd',
     halfpageup: 'u',
@@ -18,6 +13,8 @@ b:qfpreview = {
     height: 20
 }
 
+nn <buffer> k <Plug>(qf_qf_previous)
+nn <buffer> j <Plug>(qf_qf_next)
 nn <buffer> H <Plug>(qf_older)
 nn <buffer> L <Plug>(qf_newer)
 nn <buffer> { <Plug>(qf_previous_file)

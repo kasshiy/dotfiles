@@ -1,4 +1,4 @@
-nn <silent><C-e> :Fern . -reveal=% -drawer -toggle -right -width=37<CR>
+nn <silent><leader>e :Fern . -reveal=% -drawer -toggle -right -width=37<CR>
 
 " ['\.git$','\.stack-work$','\.spago$','\.vscode', '\~$','\.o','\.cache$']
 let g:fern#renderer = 'nerdfont'

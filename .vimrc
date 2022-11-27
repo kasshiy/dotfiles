@@ -102,11 +102,12 @@ Jetpack 'itchyny/vim-qfedit', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 Jetpack 'bfrg/vim-qf-diagnostics', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 Jetpack 'bfrg/vim-qf-preview', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 Jetpack 'bfrg/vim-qf-history', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
-Jetpack 'chickbone/vim-qfpopup', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 Jetpack 'thinca/vim-qfreplace', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 Jetpack 'thinca/vim-qfhl', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 
 Jetpack 'tyru/capture.vim', { 'on': 'Capture' }
+
+Jetpack 'chickbone/mini-scroll.vim'
 
 Jetpack 'vim-jp/vimdoc-ja'
 

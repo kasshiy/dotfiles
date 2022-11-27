@@ -1,6 +1,7 @@
 let g:fzf_layout = { 'tmux': '-p90%,75%' }
 
 nmap <Leader>f <Plug>(my-fzf-switch)
+
 nn <silent> <F1> :Helptags<CR>
 nn <silent> <Plug>(my-fzf-switch)b :Buffers<cr>
 nn <silent> <Plug>(my-fzf-switch)c :Commands<cr>
