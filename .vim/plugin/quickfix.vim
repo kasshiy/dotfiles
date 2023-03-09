@@ -1,6 +1,8 @@
 let g:qfhl_startup = 'enable'
 "let g:qf_auto_resize = 0
 
+hi QfhlError term=reverse cterm=underline gui=underline guisp=Red
+
 nn [q <Plug>(qf_qf_previous)
 nn ]q <Plug>(qf_qf_next)
 nn [l <Plug>(qf_loc_previous)

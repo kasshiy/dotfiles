@@ -30,10 +30,17 @@ let g:loaded_tarPlugin          = 1
 let g:loaded_tutor_mode_plugin  = 1
 let g:skip_loading_mswin        = 1
 
+"vim
+let s:jetpackfile = expand('<sfile>:p:h') .. '/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+let s:jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
+if !filereadable(s:jetpackfile)
+  call system(printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl))
+endif
+
 packadd vim-jetpack
 call jetpack#begin()
 
-Jetpack 'tani/vim-jetpack', {'opt': 1}
+Jetpack 'tani/vim-jetpack'
 Jetpack 'vim-denops/denops.vim'
 
 Jetpack 'chickbone/eva01.vim'
@@ -75,6 +82,7 @@ Jetpack 'vim-skk/skkeleton'
 
 Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Jetpack 'junegunn/fzf.vim'
+Jetpack 'lambdalisue/mr.vim'
 
 Jetpack 'kana/vim-textobj-user'
 Jetpack 'kana/vim-textobj-entire'
@@ -90,6 +98,7 @@ Jetpack 'unblevable/quick-scope'
 Jetpack 'terryma/vim-expand-region', { 'on': '<Plug>(expand_region_' }
 Jetpack 'utubo/vim-registers-lite'
 Jetpack 'markonm/traces.vim'
+Jetpack 'hrsh7th/vim-searchx'
 
 Jetpack 'lambdalisue/gina.vim', { 'on': 'Gina' }
 Jetpack 'airblade/vim-gitgutter'

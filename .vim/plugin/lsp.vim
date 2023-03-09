@@ -9,7 +9,7 @@ let g:lsp_diagnostics_echo_cursor = 0
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_format_sync_timeout = 1000
 let g:lsp_documentation_float_docked = 1
-let g:lsp_inlay_hints_enabled = 1
+" let g:lsp_inlay_hints_enabled = 1
 let g:lsp_semantic_enabled = 1
 let g:lsp_code_actions_use_popup_menu = 1
 
@@ -38,7 +38,7 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <leader>cl <plug>(lsp-code-lens)
 
   let g:lsp_format_sync_timeout = 1000
-  autocmd! BufWritePre *.rs,*.go,*.hs call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.rs,*.go,*.py,*.hs call execute('LspDocumentFormatSync')
 
 endfunction
 

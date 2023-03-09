@@ -5,8 +5,9 @@ set -x PATH ".lynxrc:$PATH"
 set -x PATH "$HOME/.cargo/bin:$PATH"
 set -x FZF_DEFAULT_OPTS "
     --cycle -0
-    --bind 'f1:execute(batt {}),f2:execute(vi {})'
+    --bind 'f1:execute(bat {}),f2:execute(vim {})'
     "
+export FZF_ALT_C_OPTS="--select-1 --exit-0 --preview 'tree -C {} | head -200'"
 export EDITOR="vim"
 export GHQ_SELECTOR="fzf-tmux"
 export GHQ_SELECTOR_OPTS="-p90%,70%"
