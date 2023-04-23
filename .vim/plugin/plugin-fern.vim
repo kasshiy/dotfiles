@@ -15,7 +15,8 @@ augroup END
 " fern settings
 function! s:init_fern() abort
   " Use 'select' instead of 'edit' for default 'open' action
-  nnoremap <silent> <buffer> q :bd<CR>
+  nmap <silent> <buffer> q :bd<CR>
+  nmap <silent> <buffer> d     <Plug>(fern-action-cd:cursor)
   nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
   nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
   nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)

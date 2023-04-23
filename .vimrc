@@ -4,8 +4,8 @@ if has('vim_starting')
   scriptencoding utf-8
 endif
 
-let g:no_gvimrc_example=1
-let g:no_vimrc_example=1
+let g:no_gvimrc_example         = 1
+let g:no_vimrc_example          = 1
 let g:did_install_default_menus = 1
 let g:did_install_syntax_menu   = 1
 let g:did_indent_on             = 1
@@ -116,6 +116,7 @@ Jetpack 'thinca/vim-qfhl', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }
 
 Jetpack 'tyru/capture.vim', { 'on': 'Capture' }
 
+Jetpack 't9md/vim-choosewin'
 Jetpack 'chickbone/mini-scroll.vim'
 
 Jetpack 'vim-jp/vimdoc-ja'
