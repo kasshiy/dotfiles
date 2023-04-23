@@ -28,7 +28,6 @@ dependencies:
 
 library:
   source-dirs: src
-  language: GHC2021
 
 executables:
   {{name}}-exe:
@@ -40,7 +39,6 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - {{name}}
-  language: GHC2021
 
 tests:
   {{name}}-test:
@@ -52,7 +50,6 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - {{name}}
-  language: GHC2021
 
 {-# START_FILE Setup.hs #-}
 import Distribution.Simple
