@@ -125,7 +125,7 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 
 # start ssh-agent in the background
 
-keychain -q ~/.ssh/git/id_rsa
+keychain -q ~/.ssh/id_ed25519
 source $HOME/.keychain/$HOSTNAME-sh
 
 #end
