@@ -7,7 +7,7 @@ templates:
     github-username: chickbone
   scm-init: git
 
-system-ghc: true
+system-ghc: false
 install-ghc: false
 
 ghc-options:
