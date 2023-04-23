@@ -13,6 +13,7 @@ export GHQ_SELECTOR="fzf-tmux"
 export GHQ_SELECTOR_OPTS="-p90%,70%"
 #export TERM="tmux-256color"
 
+alias clip='/mnt/c/WINDOWS/system32/clip.exe'
 alias code='code-insiders '
 alias fcd="fzf-cd-widget --preview 'tree -a {}'"
 alias l='lsd -l '
