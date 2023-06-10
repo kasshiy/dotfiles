@@ -44,7 +44,7 @@ else
   set history=10000
   set hls
   set ic
-  set listchars=precedes:^
+  set listchars=precedes:^,trail:-
   set autoread
   set belloff=all
   set ttimeoutlen=50
@@ -58,14 +58,23 @@ noremap <LocalLeader> <Nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
+nn <leader>w :update<CR>
+nn <leader>p "+p
+
 nmap j gj
 nmap k gk
 
+nn s <C-w>
 nn <S-Left>  <C-w><<CR>
 nn <S-Right> <C-w>><CR>
 nn <S-Up>    <C-w>-<CR>
 nn <S-Down>  <C-w>+<CR>
 nn <Tab> <C-w>w
+
+nn [t gT
+nn ]t gt
+
+nn <Space>l $
 
 if executable('rg')
   set grepprg=rg\ --no-heading\ --vimgrep
@@ -74,10 +83,11 @@ endif
 
 nn <Esc><Esc> <cmd>nohlsearch<CR><cmd>QfhlClearall<Esc>
 
-"subsititure mappings
-nn ,s :%s///g<left><left>
-vn ,s :s///g<left><left>
-cnoremap <expr> s getcmdtype() == ':' && getcmdline() == 's' ? '<BS>%s/' : 's'
+"subsititute mappings
+nn ,s :%s/\v//g<left><left>
+vn ,s :s/\v//g<left><left>
+
+cnoremap <expr> s getcmdtype() == ':' && getcmdline() == 's' ? '<BS>%s/\v' : 's'
 
 nn Y y$
 "search in visualmode

@@ -1,6 +1,6 @@
 vim9script
 
-ddc#custom#patch_global('ui', 'native')
+ddc#custom#patch_global('ui', 'pum')
 ddc#custom#patch_global('sources', ['around', 'vim-lsp', 'skkeleton'])
 ddc#custom#patch_global('sourceOptions', {
   'around': {'mark': 'A'},
@@ -14,7 +14,7 @@ ddc#custom#patch_global('sourceOptions', {
   },
 })
 
-pum#set_option('reversed', true)
+pum#set_option('reversed', false)
 ddc#custom#patch_global('sources', ['around', 'vim-lsp'])
 inoremap <silent><expr> <TAB>
       \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
@@ -23,7 +23,9 @@ inoremap <silent><expr> <TAB>
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
-inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+inoremap <silent><expr> <Space>
+      \ pum#visible() ? '<Cmd>call pum#map#confirm()<CR>' : '<Space>'
+#inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
 #ddc#custom#patch_global('autoCompleteEvents', [
