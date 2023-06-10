@@ -130,7 +130,7 @@ source $HOME/.keychain/$HOSTNAME-sh
 
 #end
 
-echo "Login successfully"
+echo "Login successful"
 echo "Enter any key....."
 read
 
