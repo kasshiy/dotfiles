@@ -1,45 +1,37 @@
-vim9script
-
-def Get_syn_id(transparent: bool): number
-  var synid = synID(line("."), col("."), 1)
-  if transparent
+function! s:get_syn_id(transparent)
+  let synid = synID(line("."), col("."), 1)
+  if a:transparent
     return synIDtrans(synid)
   else
     return synid
   endif
-enddef
-
-def Get_syn_attr(synid: number): dict<string>
-  var name = synIDattr(synid, "name")
-  var ctermfg = synIDattr(synid, "fg", "cterm")
-  var ctermbg = synIDattr(synid, "bg", "cterm")
-  var guifg = synIDattr(synid, "fg", "gui")
-  var guibg = synIDattr(synid, "bg", "gui")
+endfunction
+function! s:get_syn_attr(synid)
+  let name = synIDattr(a:synid, "name")
+  let ctermfg = synIDattr(a:synid, "fg", "cterm")
+  let ctermbg = synIDattr(a:synid, "bg", "cterm")
+  let guifg = synIDattr(a:synid, "fg", "gui")
+  let guibg = synIDattr(a:synid, "bg", "gui")
   return {
-    "name": name,
-    "ctermfg": ctermfg,
-    "ctermbg": ctermbg,
-    "guifg": guifg,
-    "guibg": guibg
-  }
-enddef
-
-def Get_syn_info()
-  var baseSyn = Get_syn_attr(Get_syn_id(0))
-  var linkedSyn = Get_syn_attr(Get_syn_id(1))
-  for key in keys(baseSyn)
-    echohl String
-    echon key .. ': ' 
-    echohl None
-    echon baseSyn[key] .. ' '
-  endfor
-  echo "link to\n"
-  for key in keys(linkedSyn)
-    echohl String
-    echon key .. ': ' 
-    echohl None
-    echon linkedSyn[key] .. ' '
-  endfor
-enddef
-
-command! SyntaxInfo Get_syn_info()
+        \ "name": name,
+        \ "ctermfg": ctermfg,
+        \ "ctermbg": ctermbg,
+        \ "guifg": guifg,
+        \ "guibg": guibg}
+endfunction
+function! s:get_syn_info()
+  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
+  echo "name: " . baseSyn.name .
+        \ " ctermfg: " . baseSyn.ctermfg .
+        \ " ctermbg: " . baseSyn.ctermbg .
+        \ " guifg: " . baseSyn.guifg .
+        \ " guibg: " . baseSyn.guibg
+  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+  echo "link to"
+  echo "name: " . linkedSyn.name .
+        \ " ctermfg: " . linkedSyn.ctermfg .
+        \ " ctermbg: " . linkedSyn.ctermbg .
+        \ " guifg: " . linkedSyn.guifg .
+        \ " guibg: " . linkedSyn.guibg
+endfunction
+command! SyntaxInfo call s:get_syn_info()
