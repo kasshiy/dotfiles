@@ -1,7 +1,14 @@
-local cmp = require'cmp'
--- local cnf = require'lspconfig'
-local lsp_installer = require'nvim-lsp-installer'
-local npairs = require('nvim-autopairs')
+local mason = require('mason')
+local nvim_lsp = require('lspconfig')
+mason.setup({
+  ui = {
+    icons = {
+      package_installed = '✓',
+      package_pending = '➜',
+      package_uninstalled = '✗',
+    },
+  },
+})
 
 -- lspconfig
 local on_attach = function(bufnr)
@@ -31,24 +38,28 @@ local on_attach = function(bufnr)
   buf_set_keymap('\\f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local cmp = require('cmp')
+local npairs = require('nvim-autopairs')
 
--- lsp_installer
-lsp_installer.on_server_ready(function(server)
-    local opts = {on_attach = on_attach; capabilities = capabilities;}
-    -- (optional) Customize the options passed to the server
-    if server.name == "jsonls" then
-        opts.commands = {
-          Format = {
-            function()
-              vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-            end
-          }
-        }
-    end
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-end)
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- mason
+local mason_lspconfig = require('mason-lspconfig')
+mason_lspconfig.setup_handlers({ function(server)
+  local opts = {on_attach = on_attach; capabilities = capabilities;}
+  -- (optional) Customize the options passed to the server
+  if server.name == "jsonls" then
+    opts.commands = {
+      Format = {
+      function()
+        vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+      end
+      }
+    }
+  end
+  nvim_lsp[server].setup(opts)
+  vim.cmd [[ do User LspAttachBuffers ]]
+end })
 
 cmp.setup({
   mapping = {
@@ -56,7 +67,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
   },
   completion = {
@@ -84,3 +95,5 @@ npairs.setup({
 require('nvim-treesitter.configs').setup {
     autopairs = {enable = true}
 }
+
+require('hlslens').setup()

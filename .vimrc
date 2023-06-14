@@ -61,9 +61,6 @@ Jetpack 'lambdalisue/fern-mapping-quickfix.vim'
 Jetpack 'LumaKernel/fern-mapping-fzf.vim'
 Jetpack 'yuki-yano/fern-preview.vim'
 
-Jetpack 'hrsh7th/vim-vsnip'
-Jetpack 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-
 Jetpack 'prabirshrestha/vim-lsp'
 Jetpack 'mattn/vim-lsp-settings'
 
@@ -78,7 +75,6 @@ Jetpack 'Shougo/ddc-matcher_head'
 Jetpack 'Shougo/ddc-sorter_rank'
 Jetpack 'Shougo/ddc-source-cmdline'
 Jetpack 'Shougo/ddc-source-cmdline-history'
-
 Jetpack 'vim-skk/skkeleton'
 
 Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
@@ -106,6 +102,9 @@ Jetpack 'airblade/vim-gitgutter'
 
 Jetpack 'skywind3000/asyncrun.vim', { 'on': 'AsyncRun' }
 Jetpack 'mhinz/vim-grepper', { 'on': ['Grepper', '<Plug>(GrepperOperator)'] }
+
+Jetpack 'hrsh7th/vim-vsnip'
+Jetpack 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
 Jetpack 'romainl/vim-qf'
 Jetpack 'itchyny/vim-qfedit', { 'on':'QuickFixCmdPre', 'cmd': 'Grepper' }

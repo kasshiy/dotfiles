@@ -13,6 +13,7 @@ set backspace=indent,eol,start
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set helplang=ja,en
 
 set number
 set virtualedit=onemore
@@ -24,9 +25,7 @@ set ignorecase
 set tagcase=followscs
 set clipboard=unnamed
 set completeopt=menuone,noinsert,noselect
-set previewpopup=height:10,width:60
 
-set helplang=ja,en
 
 if exists('g:started_by_firenvim')
   set laststatus=0
@@ -49,6 +48,7 @@ else
   set belloff=all
   set ttimeoutlen=50
   set showcmd
+  set previewpopup=height:10,width:60
 endif
 
 "--------- mapings ---------

@@ -1,4 +1,5 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
+"set runtimepath^=~/.vim
+set runtimepath^=~/.local/share/nvim/site/pack/jetpack
 let &packpath = &runtimepath
 
 source ~/.config/nvim/plugin.vim
