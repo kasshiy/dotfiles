@@ -14,12 +14,42 @@ require("notify").setup({
   minimum_width = 50,
   render = "default",
   stages = "fade_in_slide_out",
-  timeout = 5000,
+  timeout = 6000,
   top_down = false
 })
 
 -- noice
 require("noice").setup({
+  views = {
+    cmdline_popup = {
+      position = {
+        row = "40%",
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
+      },
+    },
+    popupmenu = {
+      relative = "editor",
+      position = {
+        row = 8,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = 10,
+      },
+      border = {
+        style = "single",
+        padding = { 0, 1 },
+      },
+      win_options = {
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+      },
+    },
+  },
   lsp = {
     -- override markdown rendering so that cmp and other plugins use Treesitter
     override = {
@@ -31,7 +61,7 @@ require("noice").setup({
   -- you can enable a preset for easier configuration
   presets = {
     bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
+    -- command_palette = true, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help

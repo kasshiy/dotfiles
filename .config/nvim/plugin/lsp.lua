@@ -1,5 +1,5 @@
-local mason = require('mason')
 local nvim_lsp = require('lspconfig')
+local mason = require('mason')
 mason.setup({
   ui = {
     icons = {
@@ -38,16 +38,28 @@ local on_attach = function(bufnr)
   buf_set_keymap('\\f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local cmp = require('cmp')
-local npairs = require('nvim-autopairs')
+local update_capabilities = function(capabilities)
+  local completionItem = capabilities.textDocument.completion.completionItem
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  completionItem.snippetSupport = true
+  completionItem.preselectSupport = true
+  completionItem.insertReplaceSupport = true
+  completionItem.labelDetailsSupport = true
+  completionItem.deprecatedSupport = true
+  completionItem.commitCharactersSupport = true
+  completionItem.tagSupport = { valueSet = { 1 } }
+  completionItem.resolveSupport =
+    { properties = { 'documentation', 'detail', 'additionalTextEdits' } }
+
+  return capabilities
+end
 
 -- mason
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({ function(server)
-  local opts = {on_attach = on_attach; capabilities = capabilities;}
+  local opts = {on_attach = on_attach;}
   -- (optional) Customize the options passed to the server
+  opts.capabilities = update_capabilities(vim.lsp.protocol.make_client_capabilities())
   if server.name == "jsonls" then
     opts.commands = {
       Format = {
@@ -61,7 +73,12 @@ mason_lspconfig.setup_handlers({ function(server)
   vim.cmd [[ do User LspAttachBuffers ]]
 end })
 
-cmp.setup({
+require('lspkind').init({
+    -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+    mode = 'symbol_text',
+})
+
+--[[ cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -77,23 +94,7 @@ cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
     { name = 'buffer' },
-    { name = 'vsnip' },
     { name = 'treesitter' },
     { name = 'calc' },
   }
-})
-
-npairs.setup({
-    check_ts = true,
-    ts_config = {
-        lua = {'string'},-- it will not add pair on that treesitter node
-        javascript = {'template_string'},
-        java = false,-- don't check treesitter on java
-    }
-})
-
-require('nvim-treesitter.configs').setup {
-    autopairs = {enable = true}
-}
-
-require('hlslens').setup()
+}) ]]
