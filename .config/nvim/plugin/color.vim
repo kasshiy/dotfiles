@@ -51,4 +51,5 @@ augroup mycolor
   au ColorScheme eva01-LCL call Eva_color()
 augroup END
 
-colorscheme eva01-LCL
+packadd nightfox.nvim
+colorscheme nightfox
