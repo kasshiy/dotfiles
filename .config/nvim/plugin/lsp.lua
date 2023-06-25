@@ -27,15 +27,15 @@ local on_attach = function(bufnr)
   buf_set_keymap('\\wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('\\wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('\\wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('\\D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('\\rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('\\ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('\\e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('<leader>de', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap(']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('\\q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('\\f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 local update_capabilities = function(capabilities)
@@ -60,6 +60,7 @@ mason_lspconfig.setup_handlers({ function(server)
   local opts = {on_attach = on_attach;}
   -- (optional) Customize the options passed to the server
   opts.capabilities = update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
   if server.name == "jsonls" then
     opts.commands = {
       Format = {
@@ -69,6 +70,20 @@ mason_lspconfig.setup_handlers({ function(server)
       }
     }
   end
+
+  local function detected_root_dir(root_dir)
+    return not(not(root_dir(vim.api.nvim_buf_get_name(0), vim.api.nvim_get_current_buf())))
+  end
+  if server.name == 'tsserver' or server.name == 'eslint' then
+      local root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
+      opts.root_dir = root_dir
+      opts.autostart = detected_root_dir(root_dir)
+    elseif server.name == 'denols' then
+      local root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc", "deps.ts")
+      opts.root_dir = root_dir
+      opts.autostart = detected_root_dir(root_dir)
+      opts.init_options = { lint = true, unstable = true, }
+    end
   nvim_lsp[server].setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end })

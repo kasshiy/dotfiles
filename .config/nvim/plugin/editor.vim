@@ -12,11 +12,14 @@ set backspace=indent,eol,start
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set matchpairs=(:),「:」,『:』
 set helplang=ja,en
 
 set number
-set virtualedit=onemore
+set virtualedit=onemore,block
+set diffopt=vertical,algorithm:histogram
 set signcolumn=yes
+set listchars=precedes:^,trail:-
 
 silent! nohlsearch
 set incsearch
@@ -35,7 +38,6 @@ else
   set history=10000
   set hls
   set ic
-  set listchars=precedes:^,trail:-
   set autoread
   set belloff=all
   set ttimeoutlen=50
@@ -89,6 +91,7 @@ vn ,s :s/\v//g<left><left>
 
 cnoremap <expr> s getcmdtype() == ':' && getcmdline() == 's' ? '<BS>%s/\v' : 's'
 
+nn gV `[v`]
 nn Y y$
 "search in visualmode
 vmap # y/<C-R>"<CR>
@@ -123,33 +126,3 @@ nnoremap <silent> <C-u> <cmd>call <SID>smooth_scroll('up')<CR>
 nnoremap <silent> <C-d> <cmd>call <SID>smooth_scroll('down')<CR>
 vnoremap <silent> <C-u> <cmd>call <SID>smooth_scroll('up')<CR>
 vnoremap <silent> <C-d> <cmd>call <SID>smooth_scroll('down')<CR>
-
-augroup vimrc
-  autocmd!
-  autocmd Filetype * call s:filetype(expand('<amatch>'))
-augroup END
-
-function! s:filetype(ftype) abort
-  if !empty(a:ftype) && exists('*' . 's:filetype_' . a:ftype)
-    execute 'call s:filetype_' . a:ftype . '()'
-  endif
-endfunction
-
-function! s:filetype_help() abort
-  wincmd H
-  vertical resize 81
-
-  setlocal signcolumn=no
-  " カーソル下のタグへ飛ぶ
-  nn <buffer>J <C-]>
-  " 戻る
-  nn <buffer>K <C-t>
-  " リンクしている単語を選択する
-  nn <buffer><silent><S-Tab> /\%(\_.\zs<Bar>[^ ]\+<Bar>\ze\_.\<Bar>CTRL-.\<Bar><[^ >]\+>\)<CR>
-  " その他
-  nn <buffer><silent>; :Helptags<CR>
-  nn <buffer>u <cmd>call <SID>smooth_scroll('up')<CR>
-  nn <buffer>d <cmd>call <SID>smooth_scroll('down')<CR>
-  nn <buffer>q <Cmd>helpclose<CR>
-
-endfunction

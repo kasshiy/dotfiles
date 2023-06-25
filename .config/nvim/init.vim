@@ -1,7 +1,3 @@
-"set runtimepath^=~/.vim
-set runtimepath^=~/.local/share/nvim/site/pack/jetpack
-let &packpath = &runtimepath
-
 " install jetpack.vim if it don`t exist
 " let s:jetpackfile = stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
 " let s:jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
@@ -34,6 +30,20 @@ let g:loaded_spellfile_plugin   = 1
 let g:loaded_tarPlugin          = 1
 let g:loaded_tutor_mode_plugin  = 1
 let g:skip_loading_mswin        = 1
+" let g:loaded_clipboard_provider = 1
+
+let g:clipboard = {
+  \   'name': 'myClipboard',
+  \   'copy': {
+  \      '+': 'win32yank.exe -i',
+  \      '*': 'win32yank.exe -i',
+  \    },
+  \   'paste': {
+  \      '+': 'win32yank.exe -o',
+  \      '*': 'win32yank.exe -o',
+  \   },
+  \   'cache_enabled': 1,
+  \ }
 
 source ~/.config/nvim/plugin.vim
 

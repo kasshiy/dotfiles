@@ -1,12 +1,12 @@
 packadd vim-jetpack
 call jetpack#begin()
 
-Jetpack 'tani/vim-jetpack'
+Jetpack 'tani/vim-jetpack', { 'opt': 1 }
 Jetpack 'vim-denops/denops.vim'
 
+Jetpack 'chickbone/eva01.vim', { 'opt': 1 }
+Jetpack 'EdenEast/nightfox.nvim', { 'opt': 1 }
 Jetpack 'guns/xterm-color-table.vim'
-Jetpack 'chickbone/eva01.vim'
-Jetpack 'EdenEast/nightfox.nvim'
 Jetpack 'machakann/vim-highlightedyank'
 
 Jetpack 'romgrk/barbar.nvim'
@@ -23,11 +23,11 @@ Jetpack 'MunifTanjim/nui.nvim'
 Jetpack 'stevearc/dressing.nvim'
 Jetpack 'nathom/filetype.nvim'
 
-Jetpack 'neovim/nvim-lspconfig', { 'on': ['LspInfo', 'Lsplog', 'BufReadPre', 'BufNewFile'] }
-Jetpack 'williamboman/mason.nvim', { 'on': ['Mason', 'MasonInstall', 'BufReadPre', 'BufNewFile'] }
-Jetpack 'williamboman/mason-lspconfig.nvim', { 'on': ['BufReadPre', 'BufNewFile'] }
-Jetpack 'jose-elias-alvarez/null-ls.nvim', { 'on': ['BufReadPre', 'BufNewFile'] }
-Jetpack 'jay-babu/mason-null-ls.nvim', { 'on': ['BufReadPre', 'BufNewFile'] }
+Jetpack 'neovim/nvim-lspconfig'
+Jetpack 'williamboman/mason.nvim'
+Jetpack 'williamboman/mason-lspconfig.nvim'
+Jetpack 'jose-elias-alvarez/null-ls.nvim'
+Jetpack 'jay-babu/mason-null-ls.nvim'
 Jetpack 'nvim-treesitter/nvim-treesitter'
 Jetpack 'nvim-treesitter/nvim-treesitter-textobjects'
 Jetpack 'nvim-treesitter/nvim-treesitter-refactor'
@@ -56,8 +56,8 @@ Jetpack 'stevearc/aerial.nvim'
 
 Jetpack 'antoinemadec/FixCursorHold.nvim'
 Jetpack 'max397574/better-escape.nvim'
-Jetpack 'folke/noice.nvim'
 Jetpack 'rcarriga/nvim-notify'
+Jetpack 'folke/noice.nvim'
 
 Jetpack 'Shougo/ddc.vim'
 Jetpack 'Shougo/pum.vim'
@@ -71,6 +71,7 @@ Jetpack 'Shougo/ddc-matcher_head'
 Jetpack 'Shougo/ddc-sorter_rank'
 Jetpack 'Shougo/ddc-source-cmdline'
 Jetpack 'Shougo/ddc-source-cmdline-history'
+Jetpack 'delphinus/skkeleton_indicator.nvim'
 Jetpack 'vim-skk/skkeleton'
 
 Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
@@ -104,7 +105,7 @@ Jetpack 'hrsh7th/vim-searchx'
 Jetpack 'lambdalisue/gina.vim', { 'on': 'Gina' }
 Jetpack 'rhysd/committia.vim'
 Jetpack 'lewis6991/gitsigns.nvim'
-Jetpack 'kdheepak/lazygit.nvim'
+Jetpack 'kdheepak/lazygit.nvim', { 'on': 'LazyGit' }
 Jetpack 'pwntester/octo.nvim'
 
 Jetpack 'skywind3000/asyncrun.vim', { 'on': 'AsyncRun' }
@@ -116,6 +117,8 @@ Jetpack 'simrat39/rust-tools.nvim', { 'for': 'rust' }
 Jetpack 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'call mkdp#util#install()' }
 Jetpack 'vhdirk/vim-cmake'
 
+
+Jetpack 'Jten3roberts/qf.nvim', { 'for': 'qf' }
 Jetpack 'kevinhwang91/nvim-bqf', { 'for': 'qf' }
 Jetpack 'stevearc/qf_helper.nvim', { 'for': 'qf' }
 Jetpack 'itchyny/vim-qfedit', { 'for': 'qf' }
@@ -127,6 +130,7 @@ Jetpack 'sQVe/sort.nvim'
 Jetpack 'jghauser/mkdir.nvim'
 Jetpack 'yutkat/history-ignore.vim'
 Jetpack 'tyru/open-browser.vim'
+Jetpack 'folke/which-key.nvim'
 
 Jetpack 't9md/vim-choosewin'
 Jetpack 'famiu/bufdelete.nvim'
