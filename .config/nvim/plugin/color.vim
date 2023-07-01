@@ -1,4 +1,3 @@
-set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " wave line
@@ -20,25 +19,25 @@ function! Default_color()
   hi CursorLine ctermbg=NONE guibg=NONE
   hi VertSplit ctermbg=NONE guibg=NONE
 
-  hi link haskellTSConstMacro SpecialComment
-  hi link haskellTSConstructor Type
-  hi link haskellTSKeyword Statement
-  hi haskellTSKeyword gui=italic
-  hi link haskellTSType Identifier
-  hi link haskellTSFunction Normal
-  hi link TSPunctBracket Normal
-  hi link haskellTSNamespace Number
-  hi link haskellTSCharacter String
-
-  hi link haskellWhere Include
-  hi link haskellDeriveKeyword Include
-  hi link haskellDecl Statement
-  hi link haskellDeclKeyword haskellDecl
-  hi link haskellKeyword Keyword
-
-  hi link haskellNumber Normal
-  hi link haskellDelimiter Normal
-  hi link haskellPragma SpecialComment
+  " hi link haskellTSConstMacro SpecialComment
+  " hi link haskellTSConstructor Type
+  " hi link haskellTSKeyword Statement
+  " hi haskellTSKeyword gui=italic
+  " hi link haskellTSType Identifier
+  " hi link haskellTSFunction Normal
+  " hi link TSPunctBracket Normal
+  " hi link haskellTSNamespace Number
+  " hi link haskellTSCharacter String
+  "
+  " hi link haskellWhere Include
+  " hi link haskellDeriveKeyword Include
+  " hi link haskellDecl Statement
+  " hi link haskellDeclKeyword haskellDecl
+  " hi link haskellKeyword Keyword
+  "
+  " hi link haskellNumber Normal
+  " hi link haskellDelimiter Normal
+  " hi link haskellPragma SpecialComment
 endfunction
 
 function! Eva_color()
@@ -51,5 +50,3 @@ augroup mycolor
   au ColorScheme eva01-LCL call Eva_color()
 augroup END
 
-packadd nightfox.nvim
-colorscheme nightfox

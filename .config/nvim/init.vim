@@ -1,10 +1,3 @@
-" install jetpack.vim if it don`t exist
-" let s:jetpackfile = stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
-" let s:jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
-" if !filereadable(s:jetpackfile)
-"   call system(printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl))
-" endif
-
 let g:no_gvimrc_example         = 1
 let g:no_vimrc_example          = 1
 let g:did_install_default_menus = 1
@@ -45,7 +38,14 @@ let g:clipboard = {
   \   'cache_enabled': 1,
   \ }
 
-source ~/.config/nvim/plugin.vim
+noremap <Leader>      <Nop>
+noremap <LocalLeader> <Nop>
+let g:mapleader = "\<Space>"
+let g:maplocalleader = '\'
+
+" source ~/.config/nvim/plugin.vim
+luafile ~/.config/nvim/plugin/lazy.lua
+lua require("lazy").setup("plugins")
 
 if &compatible
   set nocompatible
@@ -54,6 +54,5 @@ endif
 if !has('nvim')
   set ttymouse=xterm2
 endif
-set pumblend=10
 
 set guicursor=

@@ -31,6 +31,8 @@ set completeopt=menuone,noinsert,noselect
 if has('nvim')
   autocmd TermOpen * startinsert
   set laststatus=3
+  set pumblend=15
+  set winblend=15
 else
   set laststatus=2
   set wildmenu
@@ -47,18 +49,13 @@ endif
 
 "--------- mapings ---------
 
-noremap <Leader>      <Nop>
-noremap <LocalLeader> <Nop>
-let g:mapleader = "\<Space>"
-let g:maplocalleader = '\'
-
 nn <silent> <leader>w :update<CR>
 nn <leader>p "+p
 
 nn j gj
 nn k gk
-nn j gj
-nn k gk
+nn gj j
+nn gk k
 
 nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
 nn <silent> [oq <cmd>copen<CR><Esc>
