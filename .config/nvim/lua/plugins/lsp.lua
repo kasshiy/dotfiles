@@ -46,12 +46,13 @@ return {
     config = function()
       local nvim_lsp = require("lspconfig")
 
-      local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
-      for type, icon in pairs(signs) do
-        local hl = "LspDiagnosticsSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
-
+      vim.diagnostic.config({
+        virtual_text = false,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = false,
+      })
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -67,7 +68,9 @@ return {
           vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
           vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, opts)
-          vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set('n', '<Leader>lf', function()
+            vim.lsp.buf.format { async = true }
+          end, opts)
         end,
       })
 
@@ -129,7 +132,7 @@ return {
   },
   "jose-elias-alvarez/null-ls.nvim",
   "jay-babu/mason-null-ls.nvim",
-  {
+  --[[ {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
     dependencies = {
@@ -144,9 +147,18 @@ return {
       { "]g",         "<cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n" },
       { "gr",         "<cmd>Lspsaga rename<CR>",               mode = "n" },
     },
-    opts = {},
-  },
+    opts = {
+      symbol_in_winbar = {
+        enable = false
+      },
+      beacon = {
+        enable = false,
+      },
+    },
+  }, ]]
+
   { "onsails/lspkind-nvim", },
+
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
@@ -190,8 +202,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSUpdateSync" },
+    -- event = { "BufReadPre", "BufNewFile" },
+    -- cmd = { "TSUpdateSync" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-refactor",
@@ -226,6 +238,16 @@ return {
           show_help = "?",
         },
       },
+      incremental_selection = {
+        disable = {},
+        enable = true,
+        -- keymaps = {
+        --   init_selection = "gnn",
+        --   node_decremental = "grm",
+        --   node_incremental = "grn",
+        --   scope_incremental = "grc"
+        -- },
+      },
       query_linter = {
         enable = true,
         use_virtual_text = true,
@@ -237,4 +259,83 @@ return {
       },
     }
   },
+
+  {
+    "hrsh7th/nvim-cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      -- "ray-x/cmp-treesitter",
+      "hrsh7th/cmp-calc",
+      { 'hrsh7th/cmp-path',                    event = 'InsertEnter' },
+      { 'hrsh7th/cmp-cmdline',                 event = 'ModeChanged' },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter' },
+      { "rinx/cmp-skkeleton",                  dependencies = { "vim-skk/skkeleton" } },
+      { "onsails/lspkind-nvim", },
+    },
+    opts = function()
+      local cmp = require("cmp")
+      local lspkind = require("lspkind")
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp_document_symbol' }
+        }, {
+          { name = 'buffer' }
+        })
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline', keyword_length = 2 }
+        })
+      })
+      return {
+        mapping = {
+          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.close(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" })
+        },
+        window = {
+          completion = cmp.config.window.bordered({
+            border = 'single',
+            scrollbar = false,
+          }),
+          documentation = cmp.config.window.bordered({
+            border = 'single',
+            scrollbar = false,
+          }),
+        },
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "buffer" },
+          { name = 'nvim_lsp_signature_help' },
+          -- { name = "treesitter" },
+          { name = "calc" },
+          { name = "skkelton" },
+        },
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol',
+            maxwidth = 50,
+            ellipsis_char = '...',
+          }),
+        },
+        -- view = {
+        --   entries = 'native'
+        -- },
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+          keyword_length = 2,
+        },
+      }
+    end
+  }
 }

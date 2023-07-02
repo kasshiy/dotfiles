@@ -1,38 +1,43 @@
-set nobackup
-set noswapfile
+" set nobackup
+" set noswapfile
+"
+" set hidden
+" set mouse=a
+" set scrolloff=3
+"
+" set breakindent
+" set expandtab
+" set smartindent
+" set backspace=indent,eol,start
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set matchpairs=(:),「:」,『:』
+" set helplang=ja,en
+"
+" set number
+" set virtualedit=onemore,block
+" set diffopt=vertical,algorithm:histogram
+" set signcolumn=yes
+" set listchars=precedes:^,trail:-
+"
+" silent! nohlsearch
+" set incsearch
+" set ignorecase
+" set tagcase=followscs
+" set clipboard=unnamed
+" set completeopt=menuone,noinsert,noselect
 
-set hidden
-set mouse=a
-set scrolloff=3
-
-set breakindent
-set expandtab
-set smartindent
-set backspace=indent,eol,start
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set matchpairs=(:),「:」,『:』
-set helplang=ja,en
-
-set number
-set virtualedit=onemore,block
-set diffopt=vertical,algorithm:histogram
-set signcolumn=yes
-set listchars=precedes:^,trail:-
-
-silent! nohlsearch
-set incsearch
-set ignorecase
-set tagcase=followscs
-set clipboard=unnamed
-set completeopt=menuone,noinsert,noselect
+if executable('rg')
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
 
 if has('nvim')
   autocmd TermOpen * startinsert
-  set laststatus=3
-  set pumblend=15
-  set winblend=15
+  " set laststatus=3
+  " set pumblend=15
+  " set winblend=15
 else
   set laststatus=2
   set wildmenu
@@ -49,49 +54,38 @@ endif
 
 "--------- mapings ---------
 
-nn <silent> <leader>w :update<CR>
-nn <leader>p "+p
+" nn <silent> <leader>w :update<CR>
+" nn <leader>p "+p
 
-nn j gj
-nn k gk
-nn gj j
-nn gk k
+" nn j gj
+" nn k gk
+" nn gj j
+" nn gk k
 
-nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
+" nn <Esc><Esc> <cmd>nohlsearch<CR><Esc>
 nn <silent> [oq <cmd>copen<CR><Esc>
 nn <silent> ]oq <cmd>cclose<CR><Esc>
 nn <silent> [Q <cmd>colder<CR><Esc>
 nn <silent> ]Q <cmd>cnewer<CR><Esc>
 
-nn s <C-w>
-nn <S-Left>  <C-w><<CR>
-nn <S-Right> <C-w>><CR>
-nn <S-Up>    <C-w>-<CR>
-nn <S-Down>  <C-w>+<CR>
-nn <Tab> <C-w>w
+" nn s <C-w>
+" nn <S-Left>  <C-w><<CR>
+" nn <S-Right> <C-w>><CR>
+" nn <S-Up>    <C-w>-<CR>
+" nn <S-Down>  <C-w>+<CR>
+" nn <Tab> <C-w>w
 
-nn [t gT
-nn ]t gt
+" nn [t gT
+" nn ]t gt
 
-nn <Space>l $
-
-if executable('rg')
-  set grepprg=rg\ --no-heading\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
-
-nn <Esc><Esc> <cmd>nohlsearch<CR><cmd>QfhlClearall<Esc>
-
-"subsititute mappings
-nn ,s :%s/\v//g<left><left>
-vn ,s :s/\v//g<left><left>
+" nn <Esc><Esc> <cmd>nohlsearch<CR><cmd>QfhlClearall<Esc>
 
 cnoremap <expr> s getcmdtype() == ':' && getcmdline() == 's' ? '<BS>%s/\v' : 's'
 
-nn gV `[v`]
-nn Y y$
+" nn gV `[v`]
+" nn Y y$
 "search in visualmode
-vmap # y/<C-R>"<CR>
+" vmap # y/<C-R>"<CR>
 
 cabbrev rr source %
 command! StripWhiteSpace keeppatterns %s/\s\+$//e

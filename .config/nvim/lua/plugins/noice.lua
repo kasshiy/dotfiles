@@ -1,6 +1,7 @@
 return {
   {
     "rcarriga/nvim-notify",
+    lazy = true,
     opts = {
       background_colour = "#000000",
       -- background_colour = "NotifyBackground",
@@ -67,7 +68,7 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
-        signature = { enabled = false },
+        signature = { enabled = true },
       },
       -- you can enable a preset for easier configuration
       presets = {

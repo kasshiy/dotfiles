@@ -34,10 +34,8 @@ return {
 
   {
     "numToStr/Comment.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("Comment").setup()
-    end
+    event = "BufRead, BufNewFile",
+    opts = {},
   },
 
   "antoinemadec/FixCursorHold.nvim",
@@ -63,8 +61,37 @@ return {
   --   end
   -- },
 
-  "vim-skk/skkeleton",
-  "delphinus/skkeleton_indicator.nvim",
+  {
+    "vim-skk/skkeleton",
+    event = { "InsertEnter", "CmdlineEnter" },
+    config = function()
+      vim.cmd([[
+      function! s:skkeleton_init() abort
+       call skkeleton#config({
+       \    'eggLikeNewline': v:true,
+       \    'keepState': v:true,
+       \    'globalDictionaries': "~/.skk/SKK-JISYO.L",
+       \    'completionRankFile': '~/.skkeleton/rank.json',
+       \  })
+       call skkeleton#register_kanatable('rom', {
+       \    'jj': 'escape',
+       \    "z\<Space>": ["\u3000", ''],
+       \  })
+      endfunction
+
+      imap <silent> <C-j> <Plug>(skkeleton-toggle)
+      cmap <silent> <C-j> <Plug>(skkeleton-toggle)
+      ]])
+    end
+  },
+  {
+    "delphinus/skkeleton_indicator.nvim",
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = { "vim-skk/skkeleton" },
+    opts = {
+      border = "single"
+    }
+  },
 
   {
     "junegunn/fzf.vim",
@@ -95,7 +122,7 @@ return {
           cc
         endfunction
 
-        vim.g.fzf_action = {
+        let g:fzf_action = {
         \ 'ctrl-q': function('s:build_quickfix_list'),
         \ 'ctrl-t': 'tab split',
         \ 'ctrl-x': 'split',
@@ -129,40 +156,84 @@ return {
     },
   },
 
-  { "tpope/vim-repeat",                    event = "BufRead, BufNewFile" },
-  { "tpope/vim-unimpaired",                event = "BufRead, BufNewFile" },
-  { "machakann/vim-sandwich",              event = "BufRead, BufNewFile" },
-  { "machakann/vim-highlightedyank",       event = "BufRead, BufNewFile" },
-  { "andymass/vim-matchup",                event = "BufRead, BufNewFile" },
+  { "tpope/vim-repeat",              event = "BufRead, BufNewFile" },
+  { "tpope/vim-unimpaired",          event = "BufRead, BufNewFile" },
+  { "machakann/vim-sandwich",        event = "BufRead, BufNewFile" },
+  { "machakann/vim-highlightedyank", event = "BufRead, BufNewFile" },
+  {
+    "andymass/vim-matchup",
+    lazy = false,
+  },
   { "cohama/lexima.vim",                   event = "InsertEnter" },
   { "rhysd/clever-f.vim",                  event = "BufRead, BufNewFile" },
   { "unblevable/quick-scope",              event = "BufRead, BufNewFile" },
   { "lukas-reineke/indent-blankline.nvim", event = "BufRead, BufNewFile" },
-  { "terryma/vim-expand-region",           event = "BufRead, BufNewFile" },
   { "tversteeg/registers.nvim",            event = "BufRead, BufNewFile" },
   { "markonm/traces.vim",                  event = "BufRead, BufNewFile" },
   { "hrsh7th/vim-searchx",                 event = "BufRead, BufNewFile" },
-  { "skywind3000/asyncrun.vim",            cmd = "AsyncRun" },
 
-  { "neovimhaskell/haskell-vim",           ft = "haskell" },
-  { "simrat39/rust-tools.nvim",            ft = "rust" },
+  {
+    "monaqa/dial.nvim",
+    keys = {
+      { "<C-a>",  "<Plug>(dial-increment)",  mode = { "n", "v" } },
+      { "<C-x>",  "<Plug>(dial-decrement)",  mode = { "n", "v" } },
+      { "g<C-a>", "g<Plug>(dial-increment)", mode = { "n", "v" } },
+      { "g<C-x>", "g<Plug>(dial-decrement)", mode = { "n", "v" } },
+    },
+    opts = {}
+  },
+
+  {
+    "terryma/vim-expand-region",
+    event = "BufRead, BufNewFile",
+    keys = {
+      { "v",     "<Plug>(expand_region_expand)", mode = "x" },
+      { "<C-v>", "<Plug>(expand_region_shrink)", mode = "x" },
+    },
+    config = function()
+      vim.g.expand_region_text_objects = { iw = 1, iW = 0, ib = 1, iB = 1, il = 0, ip = 1, ie = 1, }
+    end
+  },
+
+  {
+    "skywind3000/asyncrun.vim",
+    cmd = "AsyncRun",
+    config = function()
+      vim.cmd([[
+      command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+      command! -bang -nargs=* -complete=file Stack AsyncRun stack <args>
+      command! -bang -nargs=* -complete=file Cargo AsyncRun cargo <args>
+
+      au FileType haskell nn <silent> <F5> :<C-u>AsyncRun -mode=term stack run<CR>
+      au FileType haskell nn <silent> <C-F5> :<C-u>AsyncRun -mode=term stack build<CR>
+      au FileType rust nn <silent> <F5> :<C-u>AsyncRun -mode=term cargo run<CR>
+      ]])
+    end
+
+  },
+
+  { "neovimhaskell/haskell-vim", ft = "haskell" },
+  { "simrat39/rust-tools.nvim",  ft = "rust" },
   {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
     build = ":call mkdp#util#install()",
   },
-  { "vhdirk/vim-cmake",        cmd = "CMake" },
+  { "vhdirk/vim-cmake",          cmd = "CMake" },
 
-  { "ten3roberts/qf.nvim",     ft = "qf" },
-  { "kevinhwang91/nvim-bqf",   ft = "qf" },
-  { "stevearc/qf_helper.nvim", ft = "qf" },
-  { "itchyny/vim-qfedit",      ft = "qf" },
-  { "thinca/vim-qfreplace",    ft = "qf" },
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+    opts = {},
+  },
+  { "stevearc/qf_helper.nvim",   ft = "qf" },
+  { "itchyny/vim-qfedit",        ft = "qf" },
+  { "thinca/vim-qfreplace",      ft = "qf" },
 
-  { "tyru/capture.vim",        cmd = "Capture" },
-  { "sQVe/sort.nvim",          cmd = "Sort" },
-  "yutkat/history-ignore.vim",
-  { "tyru/open-browser.vim",      cmd = "OpenBrowser" },
+  { "tyru/capture.vim",          cmd = "Capture" },
+  { "sQVe/sort.nvim",            cmd = "Sort" },
+  { "yutkat/history-ignore.vim", opts = {} },
+  { "tyru/open-browser.vim",     cmd = "OpenBrowser" },
 
   {
     "folke/which-key.nvim",
@@ -178,8 +249,18 @@ return {
     }
   },
 
-  { "famiu/bufdelete.nvim",       event = "BufRead, BufNewFile" },
-  { "stevearc/stickybuf.nvim",    event = "BufRead, BufNewFile" },
+  {
+    "kazhala/close-buffers.nvim",
+    event = "BufRead, BufNewFile",
+    opts = {
+      preserve_window_layout = { "this", "nameless" },
+    },
+  },
+  {
+    "stevearc/stickybuf.nvim",
+    event = "BufRead, BufNewFile",
+    opts = {}
+  },
   { "kwkarlwang/bufresize.nvim",  event = "BufRead, BufNewFile" },
 
   { "vim-jp/vimdoc-ja",           ft = "help" },

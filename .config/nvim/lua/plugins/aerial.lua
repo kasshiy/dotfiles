@@ -10,7 +10,7 @@ return {
       end,
     },
     {
-      "<Space>ao",
+      "gO",
       function()
         local aerial = require "aerial"
         aerial.open { focus = false }
